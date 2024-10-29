@@ -34,8 +34,9 @@ The notes for CS1 2024-2025 Course at SICTC
 
 - Miscellaneous 
 
-    Check differences in files and github
+- - Check if you are up to date with the repo
 ```
     git status
-
+    git fetch
 ```
+
