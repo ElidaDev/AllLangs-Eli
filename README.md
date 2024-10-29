@@ -26,6 +26,16 @@ The notes for CS1 2024-2025 Course at SICTC
 - - Updates local machine files with what is on GitHub
 
 ```
-    
+    cd root directory in repo
+    git fetch
+    git pull
+
 ```
+
 - Miscellaneous 
+
+    Check differences in files and github
+```
+    git status
+
+```
