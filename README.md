@@ -29,7 +29,6 @@ The notes for CS1 2024-2025 Course at SICTC
     cd root directory in repo
     git fetch
     git pull
-
 ```
 
 - Miscellaneous 
