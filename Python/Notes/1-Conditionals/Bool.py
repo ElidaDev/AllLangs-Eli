@@ -52,8 +52,6 @@ print(bool("")) #False
 
 guesses = 5
 secretNumber = 7    
-
-
 while True:
     while True:
         try:
@@ -61,20 +59,15 @@ while True:
             break
         except ValueError:
             print("Please insert an integer")
-    if guesses > 1:
+    if guesses >= 1:
         guesses -= 1
-        print(f"You have {guesses} guesses left!")
         if x > secretNumber:
             print("The number you guessed is bigger than the correct number!")
         elif x < secretNumber:
             print("The number you guessed is less than the correct number!")
         else:
             print("You got the number!")
-            break
     else:
-        if x == secretNumber:
-            print("You got the number on the last guess!")
-        else:
-            print("You ran out of guesses!")
+        print("You ran out of guesses!")
         break
 

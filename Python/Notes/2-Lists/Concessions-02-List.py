@@ -1,5 +1,3 @@
-#Teacher Notes
-
 #iteration 1:  Order some popcorn
 '''
     ask the user for what size popcorn 
@@ -12,7 +10,8 @@
 '''
 #Global Variables
 subtotal = 0
-order="User's Order\n"
+#order="User's Order\n"
+order=[]
 
 popcorn = input('''
 What size popcorn do you want? 
@@ -23,14 +22,18 @@ What size popcorn do you want?
 ''')
 if popcorn == "s":
     subtotal+=5
+    popcorn = "Small"
 elif popcorn == "m":
     subtotal+=6
+    popcorn = "Medium"
 elif popcorn == "l":
     subtotal+=7
+    popcorn = "Large"
 else:
     subtotal+=0
 
-order+=f"\t{popcorn} popcorn\n"
+#order+=f"\t{popcorn} popcorn\n"
+order.append(f"{popcorn} popcorn")
 
 print(f"subtotal: ${subtotal}")
 
@@ -53,18 +56,23 @@ What size drink do you want?
 ''')
 if drink == "s":
     subtotal+=3
+    drink = "Small"
 elif drink == "m":
     subtotal+=4
+    drink = "Medium"
 elif drink == "l":
     subtotal+=5
+    drink = "Large"
     child = input("Would you like a child size for only $0.38 more? (y/n)")
     if child == "y":
         subtotal+=.38
-        drink = "c"
+        drink = "Child"
 else:
     subtotal+=0
 
-order+=f"\t{drink} drink\n"
+#order+=f"\t{drink} drink\n"
+order.append(f"{drink} drink")
+
 print(order)
 print(f"subtotal: ${subtotal}")
 
@@ -84,7 +92,7 @@ print(f"subtotal: ${subtotal}")
 '''
 
 candy = input('''
-What size  do you want? 
+What kind do you want? 
     (s) Sour Patch Kids = $2.00
     (m) M & M's = $2.50
     (l) Licorish = $2.50
@@ -92,6 +100,7 @@ What size  do you want?
 ''')
 if candy == "s":
     subtotal+=2
+    candy = "SourPatch"
 #elif candy == "m" or "l" or "n":   DO NOT DO THIS!!!
 elif candy == "m" or candy == "l":
     subtotal+=2.50
@@ -104,7 +113,9 @@ elif candy == "m" or candy == "l":
 else:
     subtotal+=0
 
-order+=f"\t{candy} candy\n"
+#order+=f"\t{candy} candy\n"
+order.append(candy)
+
 print(order)
 print(f"subtotal: ${subtotal}")
 
@@ -120,7 +131,8 @@ if pumps < 0:
     pumps=0
 
 subtotal += pumps * 0.25
-order+=f"\t{pumps} butter pumps\n"
+#order+=f"\t{pumps} butter pumps\n"
+order.append(pumps)
 print(order)
 #subtotal:.2f means it will have 2 decimal places
 print(f"subtotal: ${subtotal:.2f}")
@@ -140,21 +152,34 @@ print(f"subtotal: ${subtotal:.2f}")
             total
 '''
 #if not(popcorn=="n" and drink=="n".....
-if popcorn!="n" and drink!="n" and candy!="n":
+if not("n" in order):
     subtotal -= 1.50
-    order+="\ty discount\n"
+    order.append("Discount: Yes")
+    #order+="\ty discount\n"
 else:
-    order+="\tn discount\n"
+    order.append("Discount: No")
+    #order+="\tn discount\n"
 
-order+=f"\n\tsubtotal: ${subtotal:.2f}\n"
-order+=f"\ttax:     ${subtotal*.07:.2f}\n"
-subtotal*=1.07
-order+=f"\ttotal:   ${subtotal:.2f}\n"
+#order+=f"\n\tsubtotal: ${subtotal:.2f}\n"
+#order+=f"\ttax:     ${subtotal*.07:.2f}\n"
+#order.append(f"subtotal: ${subtotal:.2f}")
+#order.append(f"tax: ${subtotal*.07:.2f}")
+#subtotal*=1.07
+#order+=f"\ttotal:   ${subtotal:.2f}\n"
+#order.append(f"total: ${subtotal:.2f}")
+#order = "\n".join(order)
 
-print(order)
+receipt =f'''
+User's Order:
+    {order[0]} 
+    {order[1]} 
+    {order[2]} 
+    {order[3]} pumps of butter
+    {order[4]} 
+    
+    subtotal ${subtotal:.2f}
+    tax      ${subtotal*0.07:.2f}
+    total    ${subtotal*1.07:.2f}
+'''
 
-
-
-
-
-
+print(receipt)
