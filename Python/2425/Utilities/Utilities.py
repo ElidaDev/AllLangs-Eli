@@ -1,9 +1,22 @@
+#Text color
+def colorize(color,message):
+    if color == "red":
+        return (f"\033[31m{message}\033[39m")
+    elif color == "black":
+        return (f"\033[30m{message}\033[39m")
+#TBD
 # bool if check in list
-def checkWord (validlist, check):
+def checkWord (check, validlist):
     validlist = [x.lower() for x in (validlist)]
     check = check.lower()
     return check in validlist
-
+# word if check in list    
+def userInput(question,correctAnswers):
+    ui=input(question)
+    while(not(ui.lower() in correctAnswers)):
+        ui=input(question)
+    ui = ui.title()
+    return ui
 # List cleaning
 def noDupeList (list):
     for x in list:
