@@ -4,6 +4,13 @@ posibilitiesq = []
 posibilities = []
 known = input("If x is known enter it, otherwise enter a non numeric value: ")
 
+def checkUserInput(message,z):
+    ui = ""
+    while ui.upper() !='Q':
+        ui = input(message)
+        if ui.upper() != 'Q':
+            z.append(float(ui))
+
 def syntheticdiv(x,lc):
     print(posibilities)
     p = list(posibilities)
@@ -64,21 +71,16 @@ try:
     float(known)
 except ValueError:
     known = "N"
-# Reset ui
-ui = ""
-#Get equation nums
-while ui.upper() != 'Q':
-    ui = input("Next Value in order for equation ('Q' to stop): ")
-    if ui.upper() != "Q":    
-        equation.append(float(ui))
-# Reset ui 
-ui = ""
-#Get Possible positive x values
-if known == "N":
-    while ui.upper() != 'Q':
-        ui = input("Next Value for possibilities ('Q' to stop): ")
-        if ui.upper() != "Q":    
-            posibilities.append(float(ui))
 
+checkUserInput("Next Value in order for equation ('Q' to stop): ", equation)
+checkUserInput("Next Value in order for possibilites (A) ('Q' to stop): ", posibilitiesp)
+checkUserInput("Next Value in order for possibilites (C) ('Q' to stop): ", posibilitiesq)
+# Reset ui 
+
+for i in range(len(posibilitiesq)):
+    for j in range(len(posibilitiesp)):    
+        posibilities.append(float(posibilitiesp[j]/posibilitiesq[i]))
+
+print(posibilities)
 
 print(syntheticdiv(known,equation))
