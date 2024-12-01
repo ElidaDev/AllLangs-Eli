@@ -2,7 +2,6 @@ equation = []
 posibilities = []
 known = input("If x is known enter it, otherwise enter a non numeric value: ")
 
-
 def syntheticdiv(x,lc):
     print(posibilities)
     p = list(posibilities)
@@ -25,10 +24,11 @@ def syntheticdiv(x,lc):
         a = 0
         b = True
         while b:
-            print(p)
-            print(p[a])
-            x = p[a]
-            print(x)
+            try:    
+                x = p[a]
+            except IndexError:
+                print("Value Failed all checks, you forgot a possibility or it is no solution.")
+                break
             for i in range(1, len(lc)):
                 answers.append(lc[i]+(answers[i-1]*(x)))
             #Get remainder out of answers
@@ -41,13 +41,11 @@ def syntheticdiv(x,lc):
                 remainder = answers.pop()
                 if remainder != 0:
                     a +=1
-                    print(f"{p[a-1]} FAILED")
-                    x = p[a]  
+                    print(f"{p[a-1]} FAILED")  
                 else:
                     x = x *-1
                     b = False
             else: 
-                x = p[a]
                 b = False
 
 
@@ -62,15 +60,15 @@ try:
     float(known)
 except ValueError:
     known = "N"
-# Reset ui to a random string value
-ui = '.'
+# Reset ui
+ui = None
 #Get equation nums
 while ui.upper() != 'Q':
     ui = input("Next Value in order for equation ('Q' to stop): ")
     if ui.upper() != "Q":    
         equation.append(float(ui))
-# Reset ui to a random string value
-ui = '.'
+# Reset ui 
+ui = None
 #Get Possible positive x values
 if known == "N":
     while ui.upper() != 'Q':
