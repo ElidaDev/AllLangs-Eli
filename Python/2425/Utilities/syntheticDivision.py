@@ -13,7 +13,7 @@ def checkUserInput(message,z):
 
 def syntheticdiv(x,lc):
     print(posibilities)
-    p = list(posibilities)
+    p = posibilities
     # X = y if known N if a 
         # Define Variables*
     remainder = -256
@@ -54,9 +54,11 @@ def syntheticdiv(x,lc):
                     remainderneg = None
                     remainderpos = None
                 else:
+                    remainder = 0
                     x = x *-1
                     b = False
             else: 
+                remainder = 0
                 b = False
 
 
