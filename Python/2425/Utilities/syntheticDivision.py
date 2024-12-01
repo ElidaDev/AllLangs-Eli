@@ -1,8 +1,10 @@
-equation = []
-posibilitiesp = []
-posibilitiesq = []
-posibilities = []
-known = input("If x is known enter it, otherwise enter a non numeric value: ")
+from fractions import Fraction
+
+def noDupeList (list):
+    for x in list:
+        if list.count(x) > 1:
+            del list[list.index(x)]
+    return list
 
 def checkUserInput(message,z):
     ui = ""
@@ -11,7 +13,16 @@ def checkUserInput(message,z):
         if ui.upper() != 'Q':
             z.append(float(ui))
 
-def syntheticdiv(x,lc):
+def factors(number):
+    multiples = []
+    for i in range(1,number+1):
+        if number/i == round(number/i):
+            multiples.append(int(number/i))
+            multiples.append(int(i))
+    return noDupeList(multiples)
+
+def syntheticdiv(x,lc,m=None):
+    zeros = []
     p = posibilities
     # X = y if known N if a 
         # Define Variables*
@@ -28,14 +39,16 @@ def syntheticdiv(x,lc):
         for i in range(len(answers)-1):
             exponent = len(answers) - i - 1
             answers[i] = f"{answers[i]}(x)^{exponent}"
-    else:
+        return answers,f'Remainder: {remainder}',f'x={x}'
+    
+    else:   
         a = 0
         b = True
         while b:
             try:    
                 x = p[a]
             except IndexError:
-                print("Value Failed all checks, you forgot a possibility or it is no solution.")
+                print(f"All values checked!")
                 break
             for i in range(1, len(lc)):
                 answers.append(lc[i]+(answers[i-1]*(x)))
@@ -48,38 +61,51 @@ def syntheticdiv(x,lc):
                     answers.append(lc[j]+(answers[j-1]*(x*-1)))
                 remainderneg = answers.pop()
                 if remainderneg != 0:
-                    a +=1
-                    print(f"{p[a-1]} FAILED, +r = {remainderpos}, -r = {remainderneg}")  
+                    if (remainderneg > -1 and remainderneg < 1) or (remainderpos > -1 and remainderpos < 1):     
+                        print(f"{p[a-1]:.2f} FAILED, +r = {remainderpos:.2f}, -r = {remainderneg:.2f}")  
                     remainderneg = None
                     remainderpos = None
                 else:
-                    remainder = 0
-                    x = x *-1
-                    b = False
+                    remainderneg = None
+                    zeros.append(x*-1)
             else: 
-                remainder = 0
-                b = False
-
-
+                remainderpos = None
+                zeros.append(x)
+            a += 1
+        return f'zeroes={zeros}'
        #Make it easier to read
-    for i in range(len(answers)-1):
-        exponent = len(answers) - i - 1
-        answers[i] = f"{answers[i]}x^{exponent}"
-    return answers,f'Remainder: {remainder}',f'x={x}'
-
+# Variables
+equation = []
+posibilitiesp = []
+posibilitiesq = []
+posibilities = []
+posibilitiesprint = []
+known = input("If x is known enter it, otherwise enter a non numeric value: ")
+#Setup Equation
+checkUserInput("Next Value in order for equation ('Q' to stop): ", equation)
+posibilitiesp = factors(int(equation[-1]))
+posibilitiesq = factors(int(equation[0]))
 # Set known to N if value is unknown
 try:
     float(known)
 except ValueError:
     known = "N"
 
-checkUserInput("Next Value in order for equation ('Q' to stop): ", equation)
-checkUserInput("Next Value in order for possibilites (A) ('Q' to stop): ", posibilitiesp)
-checkUserInput("Next Value in order for possibilites (C) ('Q' to stop): ", posibilitiesq)
-# Reset ui 
 
 for i in range(len(posibilitiesq)):
-    for j in range(len(posibilitiesp)):    
-        posibilities.append(float(posibilitiesp[j]/posibilitiesq[i]))
+    for j in range(len(posibilitiesp)):
+        # Calculate the division
+        division_result = Fraction(posibilitiesp[j], posibilitiesq[i])
+        posibilities.append(float(division_result))
+        posibilitiesprint.append(str(division_result))
+print(f'''
 
+{posibilitiesp}      
+____________________________      
+{posibilitiesq}
+
+Possibilites:''')
+for fraction , decimal in noDupeList(list(zip(posibilitiesprint, posibilities))):
+    print(f'\t{decimal} - > {fraction} ')
+print()
 print(syntheticdiv(known,equation))
