@@ -61,14 +61,14 @@ try:
 except ValueError:
     known = "N"
 # Reset ui
-ui = None
+ui = ""
 #Get equation nums
 while ui.upper() != 'Q':
     ui = input("Next Value in order for equation ('Q' to stop): ")
     if ui.upper() != "Q":    
         equation.append(float(ui))
 # Reset ui 
-ui = None
+ui = ""
 #Get Possible positive x values
 if known == "N":
     while ui.upper() != 'Q':
