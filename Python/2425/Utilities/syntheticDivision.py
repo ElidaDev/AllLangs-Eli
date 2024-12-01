@@ -12,7 +12,6 @@ def checkUserInput(message,z):
             z.append(float(ui))
 
 def syntheticdiv(x,lc):
-    print(posibilities)
     p = posibilities
     # X = y if known N if a 
         # Define Variables*
@@ -82,7 +81,5 @@ checkUserInput("Next Value in order for possibilites (C) ('Q' to stop): ", posib
 for i in range(len(posibilitiesq)):
     for j in range(len(posibilitiesp)):    
         posibilities.append(float(posibilitiesp[j]/posibilitiesq[i]))
-
-print(posibilities)
 
 print(syntheticdiv(known,equation))
