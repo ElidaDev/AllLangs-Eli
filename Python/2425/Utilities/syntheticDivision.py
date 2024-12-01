@@ -1,4 +1,6 @@
 equation = []
+posibilitiesp = []
+posibilitiesq = []
 posibilities = []
 known = input("If x is known enter it, otherwise enter a non numeric value: ")
 
@@ -32,16 +34,18 @@ def syntheticdiv(x,lc):
             for i in range(1, len(lc)):
                 answers.append(lc[i]+(answers[i-1]*(x)))
             #Get remainder out of answers
-            remainder = answers.pop()
-            if remainder != 0:  
+            remainderpos = answers.pop()
+            if remainderpos != 0:  
                 answers = [] 
                 answers.append(lc[0])
                 for j in range(1, len(lc)):
                     answers.append(lc[j]+(answers[j-1]*(x*-1)))
-                remainder = answers.pop()
-                if remainder != 0:
+                remainderneg = answers.pop()
+                if remainderneg != 0:
                     a +=1
-                    print(f"{p[a-1]} FAILED")  
+                    print(f"{p[a-1]} FAILED, +r = {remainderpos}, -r = {remainderneg}")  
+                    remainderneg = None
+                    remainderpos = None
                 else:
                     x = x *-1
                     b = False
