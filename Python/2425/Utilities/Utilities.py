@@ -1,6 +1,8 @@
 from fractions import Fraction
+##### Text modification #####
 
 #Text color
+
 def colorize(color,message):
     color = color.lower()
     if color == "red":
@@ -22,38 +24,87 @@ def colorize(color,message):
     elif color == "bold":
         return (f"\033[37m{message}\033[0m")
 
+##### List checking ######
+
 # bool if check in list
+
 def checkWord (check, validlist):
     validlist = [x.lower() for x in (validlist)]
     check = check.lower()
     return check in validlist
-# word if check in list    
+
+# word if check in list  
+  
 def userInput(question,correctAnswers):
     ui=input(question)
     while(not(ui.lower() in correctAnswers)):
         ui=input(question)
     ui = ui.title()
     return ui
+
 # Check for float
+
 def checkUserInput(message,z):
     ui = ""
     while ui.upper() !='Q':
         ui = input(message)
         if ui.upper() != 'Q':
             z.append(float(ui))
-# List cleaning
+
+## List cleaning
+
 def noDupeList (list):
     for x in list:
         if list.count(x) > 1:
             del list[list.index(x)]
     return list
 
-def noSpaceList (list):
+def remCharList (list,char):
     for i in range(len(list)):
-        list[i] = list[i].replace(" ","")
+        list[i] = list[i].replace(char,"")
     return list
-#Math 
+    
+###### File IO ##### 
+
+#Get Data
+
+def getData(fileName):
+    data = []
+    with open(fileName, "r") as file:
+        for line in file:
+            data.append(line.rstrip())
+    return data
+
+#Check if file contains an item
+
+def checkFile(fileName, item):
+    inFile = False
+    with open(fileName, "r") as file:
+        for line in file:
+            if item in line:
+                inFile = True
+    return inFile
+    
+#Check how many times an item occurs
+
+def countOccurences(fileName, item, column):
+    '''
+    FileName is the name of the file to check
+    item is the item to count in the file
+    column is the column the data is in, 0 if there are no commas seperating it from the start.
+    '''
+    itemCount = 0
+    with open(fileName, "r") as file:
+        for line in file:
+            data = line.rstrip().split(", ")
+            if data[column] == item:
+                itemCount += 1
+    return itemCount
+
+###### Math ######
+
 #Divide two lists and return results
+
 def divideTwoLists(top,bottom):
     results = []
     readableResults = []
@@ -64,7 +115,9 @@ def divideTwoLists(top,bottom):
             results.append(float(divisionResult))
             readableResults.append(str(divisionResult))
     return results,readableResults
+
 # Factors Readable
+
 def factors(number):
     multiples = []
     for i in range(1, int(number**0.5) + 1):
@@ -73,6 +126,7 @@ def factors(number):
     return multiples
 
 # Factors Useable
+
 def factorsTypeTwo(number):
     multiples = []
     for i in range(1,number+1):
@@ -82,11 +136,13 @@ def factorsTypeTwo(number):
     return noDupeList(multiples)
 
 #Quadratic formula
+
 def quadratic(a,b,c):    
     a,b,c = int(a),int(b),int(c)    
     return(f"({b*-1} + sqrt({(b*b)-(4*a*c)})) / {2*a}"),(f"({b*-1} - sqrt({(b*b)-(4*a*c)})) / {2*a}")
 
 #Equation for two perfect cubes    
+
 def cubeeq(a,b,sign):    
     if sign == "+":    
         return(f'''
@@ -96,7 +152,9 @@ def cubeeq(a,b,sign):
         return(f'''
         ({a}-{b})(({a}^2)+({a}*{b})+({b}^2))
         ''')
-#synthetic division math        
+
+# Synthetic division math 
+       
 def syntheticdiv(x,lc,p):
     zeros = []
     remainder = -256
@@ -147,15 +205,20 @@ def syntheticdiv(x,lc,p):
                 zeros.append(x)
             a += 1
         return f'zeroes={zeros}'
+
 #Untested below
 
 if __name__ == "__main__":
     selection = int(input('''
     0 = perfect cube eq
     1 = Quadratic Equation
+    2 = Factors of a number
+    
     '''))
     #Perfect cubes
     if selection == 0:
         print(cubeeq(input("Enter A term: "),input("Enter B term: "),input("Enter +/-: ")))
     elif selection == 1:
         print(quadratic(input("Enter A: "),input("Enter B: "),input("Enter C: ")))
+    elif selection == 2:
+        print(factors(int(input("Enter number to get its factors: "))))

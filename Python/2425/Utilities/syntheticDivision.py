@@ -1,4 +1,4 @@
-import utils
+import Utilities as utils
 from fractions import Fraction
 equation = []
 posibilities = []
