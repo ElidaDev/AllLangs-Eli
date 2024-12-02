@@ -150,3 +150,14 @@ def syntheticdiv(x,lc,p):
             a += 1
         return f'zeroes={zeros}'
 #Untested below
+
+if __name__ == "__main__":
+    selection = int(input('''
+    0 = perfect cube eq
+    1 = Quadratic Equation
+    '''))
+    #Perfect cubes
+    if selection == 0:
+        print(cubeeq(input("Enter A term: "),input("Enter B term: "),input("Enter +/-: ")))
+    elif selection == 1:
+        print(quadratic(input("Enter A: "),input("Enter B: "),input("Enter C: ")))
