@@ -22,8 +22,6 @@ def colorize(color,message):
     elif color == "bold":
         return (f"\033[37m{message}\033[0m")
 
-print(colorize("bold", "Test"))
-
 # bool if check in list
 def checkWord (check, validlist):
     validlist = [x.lower() for x in (validlist)]
