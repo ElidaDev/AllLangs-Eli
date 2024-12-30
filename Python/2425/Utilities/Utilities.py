@@ -4,6 +4,17 @@ from fractions import Fraction
 #Text color
 
 def colorize(color,message):
+    '''
+    Available colors:
+        Black,
+        Blue,
+        Cyan,
+        Green,
+        Magenta,
+        Red,
+        Yellow,
+        And more to come
+    '''
     color = color.lower()
     if color == "red":
         return (f"\033[31m{message}\033[39m")
@@ -18,7 +29,7 @@ def colorize(color,message):
     elif color == "magenta":
         return (f"\033[35m{message}\033[39m") 
     elif color == "cyan":
-        return (f"\033[36xm{message}\033[39m") 
+        return (f"\033[36m{message}\033[39m") 
     elif color == "white":
         return (f"\033[37m{message}\033[39m")
     elif color == "bold":
@@ -29,6 +40,9 @@ def colorize(color,message):
 # bool if check in list
 
 def checkWord (check, validlist):
+    '''
+    Checks if the given word(check) is in the given list.
+    '''
     validlist = [x.lower() for x in (validlist)]
     check = check.lower()
     return check in validlist
@@ -36,6 +50,9 @@ def checkWord (check, validlist):
 # word if check in list  
   
 def userInput(question,correctAnswers):
+    '''
+    Only allows the user input to be one of the answers in the list (noncase sensitive).
+    '''
     ui=input(question)
     while(not(ui.lower() in correctAnswers)):
         ui=input(question)
@@ -54,12 +71,18 @@ def checkUserInput(message,z):
 ## List cleaning
 
 def noDupeList (list):
+    '''
+    Removes duplicates from a list
+    '''
     for x in list:
         if list.count(x) > 1:
             del list[list.index(x)]
     return list
 
 def remCharList (list,char):
+    '''
+    removes given characters from all items in list.
+    '''
     for i in range(len(list)):
         list[i] = list[i].replace(char,"")
     return list
@@ -69,6 +92,9 @@ def remCharList (list,char):
 #Get Data
 
 def getData(fileName):
+    '''
+    Gets data from a file.
+    '''
     data = []
     with open(fileName, "r") as file:
         for line in file:
@@ -78,6 +104,9 @@ def getData(fileName):
 #Check if file contains an item
 
 def checkFile(fileName, item):
+    '''
+    Checks if a piece of data is in a file.
+    '''
     inFile = False
     with open(fileName, "r") as file:
         for line in file:
@@ -89,6 +118,8 @@ def checkFile(fileName, item):
 
 def countOccurences(fileName, item, column):
     '''
+    Counts how many times an item occurs in a file.
+    
     FileName is the name of the file to check
     item is the item to count in the file
     column is the column the data is in, 0 if there are no commas seperating it from the start.
@@ -106,6 +137,9 @@ def countOccurences(fileName, item, column):
 #Divide two lists and return results
 
 def divideTwoLists(top,bottom):
+    '''
+    Divides two lists and return results
+    '''
     results = []
     readableResults = []
     for i in range(len(bottom)):
@@ -119,6 +153,10 @@ def divideTwoLists(top,bottom):
 # Factors Readable
 
 def factors(number):
+    '''
+    Returns the factors of the given number
+    Format: list[num*num2,num3*num4...]
+    '''
     multiples = []
     for i in range(1, int(number**0.5) + 1):
         if number % i == 0:
@@ -128,6 +166,10 @@ def factors(number):
 # Factors Useable
 
 def factorsTypeTwo(number):
+    '''
+    Returns the factors of a given number
+    Format: list[num,num2...]
+    '''
     multiples = []
     for i in range(1,number+1):
         if number/i == round(number/i):
@@ -137,13 +179,19 @@ def factorsTypeTwo(number):
 
 #Quadratic formula
 
-def quadratic(a,b,c):    
+def quadratic(a,b,c):   
+    '''
+    Returns quadratic formula.
+    ''' 
     a,b,c = int(a),int(b),int(c)    
     return(f"({b*-1} + sqrt({(b*b)-(4*a*c)})) / {2*a}"),(f"({b*-1} - sqrt({(b*b)-(4*a*c)})) / {2*a}")
 
 #Equation for two perfect cubes    
 
 def cubeeq(a,b,sign):    
+    '''
+    Returns equation from perfect cubes
+    '''
     if sign == "+":    
         return(f'''
         ({a}+{b})(({a}^2)-({a}*{b})+({b}^2))
@@ -156,6 +204,10 @@ def cubeeq(a,b,sign):
 # Synthetic division math 
        
 def syntheticdiv(x,lc,p):
+    '''
+    Finds 0's and does synthetic divison
+    x should = "N" if no known zeros.
+    '''
     zeros = []
     remainder = -256
     answers = []
@@ -206,19 +258,3 @@ def syntheticdiv(x,lc,p):
             a += 1
         return f'zeroes={zeros}'
 
-#Untested below
-
-if __name__ == "__main__":
-    selection = int(input('''
-    0 = perfect cube eq
-    1 = Quadratic Equation
-    2 = Factors of a number
-    
-    '''))
-    #Perfect cubes
-    if selection == 0:
-        print(cubeeq(input("Enter A term: "),input("Enter B term: "),input("Enter +/-: ")))
-    elif selection == 1:
-        print(quadratic(input("Enter A: "),input("Enter B: "),input("Enter C: ")))
-    elif selection == 2:
-        print(factors(int(input("Enter number to get its factors: "))))
