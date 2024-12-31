@@ -4,12 +4,12 @@ The notes for CS1 2024-2025 Course at SICTC
 
 ### Python
 - I've written the most in python, Most of it is in this repo!
- 
-### Java
-- I've written Hello world + Some minimal automation programs (Will have more experience in 2025-26 school year).
 
 ### C
 - This repo shows all of the C programs I have written.
+  
+### Java
+- Some minimal automation programs, and other programs (Will have more experience in 2025-26 school year).
 
 ### html
 - I have done freecodecamp lessons with html, but thats about it.
