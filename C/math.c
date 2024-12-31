@@ -48,7 +48,6 @@ const char* isPrime(int num){
 }
 
 
-
 void main(){
     printf("%d\n", add(1,2));
     printf("%s\n", evenorodd(1));
