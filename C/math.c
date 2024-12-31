@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 int add(int x, int y){
     return x+y;
@@ -29,8 +30,26 @@ double calculator(double x, double y, char operator){
     }
     return value;
 }
+
+const char* isPrime(int num){
+    if (num <=1){
+        return "Not Prime";
+        }
+    for (int i = 2; i <= sqrt(num); i++){
+        if (num % i == 0){
+            return "Not Prime";
+            }
+    
+    }
+    return "Prime!";
+}
+
+
 void main(){
     printf("%d\n", add(1,2));
     printf("%s\n", evenorodd(1));
     printf("%.16f\n", calculator(2.0,3.0,'a'));
+    printf("%s\n", isPrime(1));
+    printf("%s\n", isPrime(3));
+    printf("%s\n", isPrime(4));
 }
