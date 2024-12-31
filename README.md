@@ -1,7 +1,26 @@
 # 2425Materials
 The notes for CS1 2024-2025 Course at SICTC
+## My understandings of programming languages Ranked:
 
+### Python
+- I've written the most in python, Most of it is in this repo!
+ 
+### Java
+- I've written Hello world + Some minimal automation programs (Will have more experience in 2025-26 school year).
 
+### C
+- This repo shows all of the C programs I have written.
+
+### html
+- I have done freecodecamp lessons with html, but thats about it.
+
+### Js
+- Written hello world + what is in the repo here.
+
+### Css
+- This was in the free code camp lessons, however I do not recall most of it.
+
+---
 ### Git File Management Commands
 
 - Cloning a repo from GitHub
