@@ -1,8 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(){
 
-    int secretNumber = 7;
+    srand(time(NULL));
+    int r = rand() % 9;
+    int secretNumber = r+1;
     int guess;
     int guesses = 5;
     int loop = 1;
