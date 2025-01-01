@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <strings.h>
 
 int main(){
     printf("Hello World!");
@@ -12,9 +13,9 @@ int main(){
 
     // Variables
     int x; //Declaration
-    x = 1; //Initialization
     int y = 2; //Declaration/Initialization same line
     char z = 'a';
+    char name[25];
     double a = 1.5; // 
     float b = 2.0;
     char c[] = "This is an array of characters!";
@@ -42,8 +43,12 @@ Formatting
 */
 
 // He talks about all the operators, but i know them all from other programming languages atleast what he went over...
-
-    scanf("%d", &x);
-    printf("The value of x is %d!",x);
+    // printf("Please input x: ");
+    // scanf("%d", &x);
+    printf("What's your name: ");
+    fgets(name, 25, stdin);
+    name[strlen(name)-1] = '\0'; // gets rid of newline character
+    
+    printf("You're name %s is pretty cool!", name);
     return 0;
 }
