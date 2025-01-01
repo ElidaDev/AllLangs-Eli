@@ -24,7 +24,6 @@ def unlock_combination_lock():
         else:
             print("Incorrect combination. Try again.")
 
-if __name__ == '__main__':
-    print("Welcome to the 4-Digit Combination Lock Simulator")
-    print(f"Set the combination to: ????")
-    unlock_combination_lock()
+print("Welcome to the 4-Digit Combination Lock Simulator")
+print(f"Set the combination to: ????")
+unlock_combination_lock()
