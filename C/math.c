@@ -82,7 +82,6 @@ const char* isPrime(int num){
 }
 
 double converter(float temperature, char unit){
-    
     if(toupper(unit) == 'F'){
         temperature = ((temperature - 32) * 5) / 9;
         return temperature;
@@ -97,6 +96,9 @@ double converter(float temperature, char unit){
     }
 }
 
+int max(short x, short y){
+    return x>y?x:y;
+}
 
 void main(){
     // printf("%s\n", evenorodd(1));
@@ -108,5 +110,6 @@ void main(){
     // printf("%lf\n", circumference(10));
     // printf("%.5lf\n", area(10,0,"circle"));
     // printf("%lf", hypotenuse(3,4));
-    printf("%f", converter(32,'f'));
+    // printf("%f", converter(32,'f'));
+    // printf("%d is the bigger value", max(250,50));
 }
