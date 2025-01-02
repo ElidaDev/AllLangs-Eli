@@ -91,5 +91,21 @@ int main(){
     // strcpy(player2.name,"NotMe...");
     // player2.score = 1;
     // printf("\n\n%-12s:%-4d\n%-12s:%-4d",player1.name,player1.score,player2.name,player2.score);
+
+    int x = 6;    // 0000110
+    int y = 12;   // 0001100
+    int z = 0;    // 0000000
+
+
+    z = x&y;
+
+    printf ("And: %d", z);
+
+    z = x|y;
+
+    printf ("or: %d", z);
+    z = x|y;
+
+    printf ("xor: %d", z);
     return 0;
 }
