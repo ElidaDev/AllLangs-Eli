@@ -120,6 +120,6 @@ int main(){
 
     printf("size of age: %p bytes\n", sizeof(age));
     printf("size of pAge: %p\n", sizeof(pAge));
-
+    printf("%d",*pAge);
     return 0;
 }
