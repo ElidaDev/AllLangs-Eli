@@ -74,7 +74,7 @@ docs/_build/
 # PyBuilder
 .pybuilder/
 target/
-
+Python/Python Projects 2023/opencv/
 # Jupyter Notebook
 .ipynb_checkpoints
 
