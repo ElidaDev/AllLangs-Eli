@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-char string[2];
+
 
 int addToFile(char filePath[], char data[], short int times){
     FILE *pF = fopen(filePath,"a");
@@ -79,12 +79,16 @@ int removeFile(char filePath[]){
         return 1;
     }
 }
+
 int main(){
     char filePath[] ="C:\\Users\\elija\\Desktop\\test.txt";
+    char string[2];
+
     srand(time(0));
-    findInFile(filePath,"1",1);
+
+    //findInFile(filePath,"1",1);
     //printLine(filePath,250);
-    //removeFile(filePath);
+    // removeFile(filePath);
     // for(int i = 0; i < 1000; i++){
     //     addToFile(filePath,"1",1);
     //     for(int j = 0; j < 50; j++){
