@@ -1,5 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
+char string[2];
 
 int addToFile(char filePath[], char data[], short int times){
     FILE *pF = fopen(filePath,"a");
@@ -14,7 +18,7 @@ int addToFile(char filePath[], char data[], short int times){
     return 0;
 }
 
-int findInFile(char filePath[], char data[]){
+int findInFile(char filePath[], char data[], int reverse){ // if reverse = 1, this is a reverse search for anything except the data inputed
     FILE *pF = fopen(filePath,"r");
     char buffer[255];
     unsigned int line = 0;
@@ -22,9 +26,18 @@ int findInFile(char filePath[], char data[]){
 
     while(fgets(buffer, 255, pF) != NULL){
         line++;
-        if (strstr(buffer,data)){
-            printf("\nLine number: %u\nThe value has been found: %s\n",line, buffer);
-            found = 1;
+        if(reverse != 1){
+            if (strstr(buffer,data)){
+                
+                printf("\nLine number: %u\nThe value has been found: %s\n",line, buffer);
+                found = 1;
+            }
+            }
+        else{
+            if ((strstr(buffer,data)) == 0){
+                printf("\nLine number: %u\nThe value has been found: %s\n",line, buffer);
+                found = 1;
+            }
         }
     }
     fclose(pF);
@@ -68,12 +81,20 @@ int removeFile(char filePath[]){
 }
 int main(){
     char filePath[] ="C:\\Users\\elija\\Desktop\\test.txt";
-   
-    //findInFile(filePath,"Ta");
+    srand(time(0));
+    findInFile(filePath,"1",1);
     //printLine(filePath,250);
     //removeFile(filePath);
-    //addToFile(filePath, "You have been tacoed \n",5000);
-
+    // for(int i = 0; i < 1000; i++){
+    //     addToFile(filePath,"1",1);
+    //     for(int j = 0; j < 50; j++){
+    //         char randomChar = (char)((rand() % 94) + 33);
+    //         string[0] = randomChar;
+    //         string[1] = '\0';
+    //         addToFile(filePath,string ,1);
+    //     }
+    //     addToFile(filePath,"\n" ,1);
+    // }
 
 
 
