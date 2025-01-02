@@ -58,3 +58,9 @@ The notes for CS1 2024-2025 Course at SICTC
     git fetch
 ```
 
+- - Update Language summary and clear cache
+ 
+  - git rm --cached -r .
+  - git add .
+  - git commit -m "Message"
+  - git push 
