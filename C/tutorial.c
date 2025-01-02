@@ -91,7 +91,7 @@ int main(){
     // strcpy(player2.name,"NotMe...");
     // player2.score = 1;
     // printf("\n\n%-12s:%-4d\n%-12s:%-4d",player1.name,player1.score,player2.name,player2.score);
-
+/*
     int x = 6;    // 0000110
     int y = 12;   // 0001100
     int z = 0;    // 0000000
@@ -107,5 +107,19 @@ int main(){
     z = x|y;
 
     printf ("xor: %d", z);
+
+    printf("Adress: %p", &z);
+
+*/
+    ///// POINTERS
+    int age = 17;
+    int *pAge = &age;
+
+    printf("address of age: %p\n", &age);
+    printf("value of pAge: %p\n", pAge);
+
+    printf("size of age: %p bytes\n", sizeof(age));
+    printf("size of pAge: %p\n", sizeof(pAge));
+
     return 0;
 }
