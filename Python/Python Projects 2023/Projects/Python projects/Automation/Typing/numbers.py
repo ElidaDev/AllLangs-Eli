@@ -8,7 +8,7 @@ min_val = int(input("Minimum: "))
 max_val = int(input("Maximum: "))
 wait = float(input("Wait: "))
 do_typing = True
-mc = True
+mc = True #True opens the chat in minecraft, by pressing 't' prior to sending the message.
 time.sleep(5)
 
 for num in range(min_val, max_val + 1, a):

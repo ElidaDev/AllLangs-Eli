@@ -86,10 +86,10 @@ int main(){
 
     srand(time(0));
 
-    //findInFile(filePath,"1",1);
+    //findInFile(filePath,"Password",1);
     //printLine(filePath,250);
     // removeFile(filePath);
-    // for(int i = 0; i < 1000; i++){
+    // for(int i = 0; i < 10000; i++){
     //     addToFile(filePath,"1",1);
     //     for(int j = 0; j < 50; j++){
     //         char randomChar = (char)((rand() % 94) + 33);

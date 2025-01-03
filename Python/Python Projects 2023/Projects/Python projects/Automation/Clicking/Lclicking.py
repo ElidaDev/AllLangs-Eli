@@ -13,47 +13,27 @@ if coords == "y":
     
     time.sleep(z)
     pyautogui.moveTo(x, y, duration=5)
-    if c == "Left":
-        for z in range(t):
-            time.sleep(s)
-            pyautogui.leftClick(x, y)
-            if keyboard.is_pressed('esc'):
-                break
-    elif c == "Right":
-        for z in range(t):
-            time.sleep(s)
-            pyautogui.rightClick(x, y)
-            if keyboard.is_pressed('esc'):
-                break
-    elif c == "Middle":
-        for z in range(t):
-            time.sleep(s)
-            pyautogui.middleClick(x, y)
-            if keyboard.is_pressed('esc'):
-                break
-    else: 
-        print("Incorrect input")
+    for z in range(t):
+        time.sleep(s)
+        if c == "Left":
+            pyautogui.leftClick(x,y)
+        elif c == "Right":
+            pyautogui.rightClick(x,y)
+        else:
+            pyautogui.middleClick(x,y)
+        if keyboard.is_pressed('esc'):
+            break
 elif coords == "n":
     time.sleep(z)
-    if c == "Left":
-        for z in range(t):
-            time.sleep(s)
+    for z in range(t):
+        time.sleep(s)
+        if c == "Left":
             pyautogui.leftClick()
-            if keyboard.is_pressed('esc'):
-                break
-    elif c == "Right":
-        for z in range(t):
-            time.sleep(s)
+        elif c == "Right":
             pyautogui.rightClick()
-            if keyboard.is_pressed('esc'):
-                break
-    elif c == "Middle":
-        for z in range(t):
-            time.sleep(s)
+        else:
             pyautogui.middleClick()
-            if keyboard.is_pressed('esc'):
-                break
-    else: 
-        print("Incorrect input")
+        if keyboard.is_pressed('esc'):
+            break
 
 

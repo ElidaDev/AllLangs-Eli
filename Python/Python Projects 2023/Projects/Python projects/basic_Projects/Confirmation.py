@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import os
-
+#This is a personal application made for a quick way to launch my favorite apps on my computer using a small macro keyboard
 global SELECTED
 SELECTED = False
 global Application

@@ -7,7 +7,7 @@ for i in range(Tosses):
     x = rdm.randint(1, 2)
     if x == 1:
         Flips.append("Heads")
-    if x == 2:
+    else:
         Flips.append("Tails")
 print(Flips)
 

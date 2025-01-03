@@ -6,21 +6,21 @@ import itertools
 passw = "0000"
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 digits = int(input("How many digits are in the code? "))
-entry_method = input("Typef or Types or click or Test? ")
-max_value = int("9" * digits)
+entryMethod = "Type" # Type or Test
+maxValue = int("9" * digits)
 
 #pos = [pag.locateCenterOnScreen('0.jpg'), pag.locateCenterOnScreen('1.jpg'), pag.locateCenterOnScreen('2.jpg'), pag.locateCenterOnScreen('3.jpg'), pag.locateCenterOnScreen('4.jpg'), pag.locateCenterOnScreen('5.jpg'), pag.locateCenterOnScreen('6.jpg'), pag.locateCenterOnScreen('7.jpg'), pag.locateCenterOnScreen('8.jpg'), pag.locateCenterOnScreen('9.jpg')]
 enterneeded = True
 #ex, ey = pag.locateCenterOnScreen('enter.jpg')
 time.sleep(5)
-typing_speed = 0.01
+typingSpeed = 0.01
 
 def simulate_typing(code):
     print("Typed: ", code)
     return code == passw
 
-if entry_method == "Typef":
-    for i in range(max_value + 1): 
+if entryMethod == "Typef":
+    for i in range(maxValue + 1): 
         if kbrd.is_pressed('q'):
             break
         code = str(i).zfill(digits)
@@ -29,40 +29,30 @@ if entry_method == "Typef":
             if kbrd.is_pressed('q'):
                 break
             kbrd.press(digit)
-            time.sleep(0.00001)
+            if entryMethod == "Typef":
+                time.sleep(0.00001)
+            else:
+                time.sleep(typingSpeed)
             kbrd.release(digit)
         kbrd.press_and_release('enter')
 
-if entry_method == "Types":
-    for i in range(max_value + 1): 
-        if kbrd.is_pressed('q'):
-            break
-        code = str(i).zfill(digits)
-        print("Typed: ", code)
-        for digit in code:
-            if kbrd.is_pressed('q'):
-                break
-            kbrd.press(digit)
-            time.sleep(typing_speed)
-            kbrd.release(digit)
-        kbrd.press_and_release('enter')
 
-if entry_method == "Click":
-    combinations = list(itertools.permutations(pos))
-    for combo in combinations:
-        if kbrd.is_pressed('q'):
-            break
-        for position in combo:
-            if kbrd.is_pressed('q'):
-                break
-            x, y = position
-            pag.click(x, y)
-        if enterneeded == True:
-            pag.click(ex, ey)
+# if entry_method == "Click":
+#     combinations = list(itertools.permutations(pos))
+#     for combo in combinations:
+#         if kbrd.is_pressed('q'):
+#             break
+#         for position in combo:
+#             if kbrd.is_pressed('q'):
+#                 break
+#             x, y = position
+#             pag.click(x, y)
+#         if enterneeded == True:
+#             pag.click(ex, ey)
 
-if entry_method == "Test":
+if entryMethod == "Test":
     start_time = time.time()
-    for i in range(max_value + 1):
+    for i in range(maxValue + 1):
         if kbrd.is_pressed('q'):
             break
         code = str(i).zfill(digits)

@@ -1,4 +1,5 @@
 from fractions import Fraction
+import time
 ##### Text modification #####
 
 #Text color
@@ -131,7 +132,46 @@ def countOccurences(fileName, item, column):
             if data[column] == item:
                 itemCount += 1
     return itemCount
+## Error catch functions ##
 
+def getFloatInput(prompt):
+    while True:
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+def getIntInput(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+def getStrInput(prompt):
+    while True:
+        try:
+            value = str(input(prompt))
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid String.")
+def getBoolInput(prompt):
+    while True:
+        try:
+            value = bool(input(prompt))
+            return value
+        except NameError:
+            print("Invalid input. Please enter a valid input 'True' or 'False'. (Case sensitive)")
+ 
+#Displays a countdown of time t in seconds            
+def countdown(t):
+    while t: 
+        mins, secs = divmod(t, 60) 
+        timer = '{:02d}:{:02d}'.format(mins, secs) 
+        print(timer, end="\r") 
+        time.sleep(1) 
+        t -= 1           
+            
 ###### Math ######
 
 #Divide two lists and return results
