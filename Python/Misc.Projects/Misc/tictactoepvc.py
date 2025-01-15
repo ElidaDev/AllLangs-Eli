@@ -1,4 +1,5 @@
 import string
+import random as rand
 
 gameBoard = [
 ["1", "2", "3"],
@@ -96,28 +97,37 @@ turn = True
 print("Welcome to TicTac Toe")
 
 while(symbol != 'q'):
-    print("")
-    drawBoard(gameBoard)
-    valid = False
+    if symbol == 'X':    
+        print("")
+        drawBoard(gameBoard)
+        valid = False
 
-    while not valid:
-        print("")
-        spot = int(input("Select a spot: "))-1
-        print("")
-        if spot in range(9):
-            row = selection[spot+1][0]
-            col = selection[spot+1][1]
+        while not valid:
+            print("")
+            spot = int(input("Select a spot: "))-1
+            print("")
+            if spot in range(9):
+                row = selection[spot+1][0]
+                col = selection[spot+1][1]
+                if checkSpot(symbol,gameBoard,row,col):
+                    print("Spot Taken")
+                else:
+                    valid = True
+                    
+        if checkWinner(gameBoard): 
+            symbol = 'q'
+
+        if symbol != 'q':
+            symbol = 'O'
+    else:
+        valid = False
+        while not valid:
+            spot = rand.randint(1,9)
+            row = selection[spot][0]
+            col = selection[spot][1]
             if checkSpot(symbol,gameBoard,row,col):
                 print("Spot Taken")
             else:
                 valid = True
-                
-    if checkWinner(gameBoard): 
-        symbol = 'q'
 
-    if symbol == 'X':
-        symbol = "O"
-    elif symbol == 'O':
         symbol = 'X'
-    else:
-        symbol = 'q'
