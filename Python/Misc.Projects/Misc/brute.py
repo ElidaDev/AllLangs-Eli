@@ -21,6 +21,7 @@ if entry_method == "Type":
         if kbrd.is_pressed('q'):
             break
         code = str(i).zfill(digits)
+        
         for digit in code:
             if kbrd.is_pressed('q'):
                 break

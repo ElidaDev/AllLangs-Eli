@@ -5,23 +5,29 @@ my_turtles = []
 turtle_shapes = ["arrow", "turtle", "circle", "square", "triangle", "classic"]
 turtle_colors = ["red", "blue", "green", "orange", "purple", "gold"]
 
-for s in range(len(turtle_shapes)):
-  t = trtl.Turtle(shape=turtle_shapes[s])
-  t.color(turtle_colors[s])
+#adds turtles to my_turtles
+for s in turtle_shapes:
+  t = trtl.Turtle(shape=s)
+  newColor=turtle_colors.pop()
+  t.color(newColor)
   my_turtles.append(t)
-wn = trtl.Screen()
-startx = 0
-starty = 0
-currentHeading = 90
-while True:
-    for t in my_turtles:
-        t.teleport(startx, starty)
-        t.setheading(currentHeading)
-        t.right(45)     
-        t.forward(50)
-        currentHeading += 45
-        startx = t.xcor()
-        starty = t.ycor()
-        currentHeading = t.heading()
 
+startx,starty = 0,0
+direction = 90
+#moves the individual turtles
+for t in my_turtles:
+    t.speed(0)
+    t.teleport(startx, starty)
+    t.setheading(direction) #point up and to the right
+    t.right(45)     
+    t.forward(50)
+    
+    #reset startx,starty,direction for the next turtle
+    startx = t.xcor() #grabbing the previous turtle's x coordinate
+    starty = t.ycor() 
+    direction = t.heading()  
+while True:
+  for i in range(len(my_turtles)-1):
+    nextx,nexty= my_turtles[i+1].xcor(),my_turtles[i+1].ycor()
+    my_turtles[i].teleport(nextx,nexty)
 wn.mainloop()
