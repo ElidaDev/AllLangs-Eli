@@ -2,6 +2,7 @@ import turtle
 painter = turtle.Turtle(shape="square")
 wn = turtle.Screen()
 
+topleft = turtle.Screen
 def Pattern(vertical,length,sx,sy, color1,color2,distance):
     startx = sx 
     for i in range(vertical):
