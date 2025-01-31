@@ -4,11 +4,13 @@ import random as r
 import Leaderboard as lb
 
 #---global var and objects and game configuration
-misses = 0
+clicks = 0
 hits = 0
 wn = t.Screen()   #everything is clickable...
 wn.bgcolor("black")
 wn.setup(600,725)
+points = ((-5, 0), (0, 10), (5, 0), (0, -10))
+wn.register_shape("star", points)
 
 turtle = t.Turtle(shape="turtle")
 turtle.shapesize(2)
@@ -17,33 +19,34 @@ turtle.speed(0)
 
 scoreKeeper = t.Turtle()
 scoreKeeper.speed(0)
-scoreKeeper.teleport(100,315)
+scoreKeeper.teleport(300,315)
 scoreKeeper.color("pink")
 scoreKeeper.ht()
 
 accuracyKeep = t.Turtle()
-accuracyKeep.teleport(0,350)
+accuracyKeep.teleport(0,315)
 accuracyKeep.color("white")
 accuracyKeep.ht()
 
 
 leaderBoardDrawer = t.Turtle()
 leaderBoardDrawer.speed(0)
-leaderBoardDrawer.teleport(100,315)
-leaderBoardDrawer.color("pink")
+leaderBoardDrawer.teleport(-100,315)
+leaderBoardDrawer.color("red")
+leaderBoardDrawer.shape("star")
 leaderBoardDrawer.ht()
 
 timeKeeper = t.Turtle()
 timeKeeper.color("goldenrod3")
-timeKeeper.teleport(-200,315)
+timeKeeper.teleport(-300,315)
 timeKeeper.ht()
 
 score=0
-timer=5
-interval=1000
+timer=10
+interval=500
 fontSetup = ("Times New Roman", 30, "normal")
 
-playerName = input("Please enter a name to use: ")
+playerName = "Testing"
 playing = True
 #---f(x)
 #every command that is based on a mouse click MUST HAVE the x,y var passed in
@@ -78,41 +81,42 @@ def updateTimer():
         timeKeeper.clear()
     if timer<=0 and playing:
         playing = False
-        timeKeeper.write("Time's Up!",font=fontSetup)
+        #timeKeeper.write("Time's Up!",font=fontSetup)
         manageLeaderBoard()
     else:
         timeKeeper.write(f"Time: {timer}",font=fontSetup)
         timeKeeper.getscreen().ontimer(updateTimer,interval)
 
-def miss():
-    global misses
-    misses += 1
-
-def turtleClicked(mouseX,mouseY):  #add any features to this f(x) that trigger when turtle is clicked
+buffer = 15
+def click(mouseX,mouseY):  #add any features to this f(x) that trigger when turtle is clicked
+    global clicks
+    clicks +=1
     if playing:
-        global timer
-        global hits
-        hits += 1
-        timer += .5
-        print("Whacked!")
-        moveturtle()
-        updateTimer()
-        updateScore()
-
+        if (mouseX >= turtle.xcor()-buffer and mouseX <= turtle.xcor()+buffer) and (mouseY>= turtle.ycor()-buffer and mouseY <= turtle.ycor()+buffer):
+            global timer
+            global hits
+            hits += 1
+            timer += .5
+            print("Whacked!")
+            moveturtle()
+            updateScore()
+        updateAccuracy()
+        
 def updateAccuracy():
     if playing:
-        global misses
+        global clicks
         global hits
         global accuracy
-        accuracy = (hits/max(misses,1))*100
+        calculation = (hits/max(clicks,1))
+        accuracy = round(min((calculation*100),100),2)
         accuracyKeep.clear()
         accuracyKeep.write(f"Accuracy: {accuracy}%",font= fontSetup)
 
 
 #---events - event handlers
-turtle.onclick(turtleClicked)
+wn.onscreenclick(click)
 wn.ontimer(updateTimer,interval)
-
+wn.listen()
 #---mainloop
 wn.mainloop()
 

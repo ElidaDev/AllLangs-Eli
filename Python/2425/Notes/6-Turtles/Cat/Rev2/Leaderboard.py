@@ -8,6 +8,8 @@ UpperCase
 '''
 
 
+
+
 # return names in the leaderboard file
 def getNames(fileName = 'db.txt'):
     leaderboardFile = open(fileName, "r")  # be sure you have created this
@@ -100,6 +102,14 @@ def newLine(turtleObject):
     turtleObject.goto(-160, int(turtleObject.ycor()) - 50)
     turtleObject.pendown()
 
+def drawMedal(color,turtleObject):
+    turtleObject.showturtle()
+    turtleObject.setx(turtleObject.xcor()-25)
+    turtleObject.size(1)
+    turtleObject.color(color)
+    turtleObject.stamp()
+    turtleObject.setx(turtleObject.xcor()+25)
+    turtleObject.ht()
 # draw leaderboard and display a message to player
 def drawLeaderboard(highScorer, leaderNames, leaderScores, turtleObject, playerScore):
 
@@ -115,6 +125,13 @@ def drawLeaderboard(highScorer, leaderNames, leaderScores, turtleObject, playerS
 
     # TODO 14: loop through the lists and use the same index to display the corresponding name and score, separated by a tab space '\t'
     for i in range(len(leaderNames)):
+        match i:
+            case 1:
+                drawMedal("gold",turtleObject)
+            case 2:
+                drawMedal("grey",turtleObject)
+            case 3:
+                drawMedal("gold",turtleObject)
         turtleObject.write(f"\n{i+1}.{leaderNames[i]}: {leaderScores[i]}",font = fontSetup)
         newLine(turtleObject)
     newLine(turtleObject)

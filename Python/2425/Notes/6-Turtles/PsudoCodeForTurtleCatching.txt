@@ -2,13 +2,6 @@ Psudo code for catch a turtle
 
 
 ____________________________________________________________________________________________________
-Add time:
-
-time = 30 (in seconds)
-
-On turtle click:
-	time += .5
-____________________________________________________________________________________________________
 
 Background:
 
@@ -16,10 +9,7 @@ screen = turtle.Screen()
 screen.setup(600,400)
 screen.bgpic('')
 ____________________________________________________________________________________________________
-Turtles clickable:
 
-Make time keeper and score keeper above a certain y level, then makesure turtles cant spawn above it 
-_____________________________________________________________________________________________________
 Keep track of accuracy:
 
 Variables:
@@ -68,11 +58,6 @@ def checkLB(userName):
 		case default:
 			return None
 
-if checkLB(userName) != None:
-	print(f"{userName} Got {checkLb(userName)}!!")
-
-____________________________________________________________________________________________________
-keep track of time, when its done show top 5, labeling the top 3 with the above function
 ____________________________________________________________________________________________________
 Bonus: 3
 Use sounds from snake game (windows error) :D 
