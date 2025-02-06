@@ -10,7 +10,9 @@ fontSetup = ("Comic Sans MS", 30, "normal")
 ball = turtle.Turtle(shape="circle")
 ball.color("ivory")
 ball.penup()
-ball.speed(0)
+ball.speed(3)
+speed = 3
+originalspeed = 3
 
 scoreKeeper = turtle.Turtle()
 scoreKeeper.speed(0)
@@ -31,7 +33,7 @@ leftPlayer.speed(0)
 leftPlayer.turtlesize(4,1)                   #turtlesize will stretch the turtle
 leftPlayer.setx(-c.COURTWIDTH/2+10)
 
-#left player or player blue
+#left player or player blue #right is ai
 rightPlayer = turtle.Turtle("square")
 rightPlayer.color("orange")
 rightPlayer.penup()
@@ -49,6 +51,8 @@ wn.screensize(COURTHEIGHT+100,COURTWIDTH+100)
 wn.bgcolor("black")
 
 def resetBall():
+    global speed
+    speed = originalspeed
     ball.setpos(0,0)
     if r.randint(0,1)==0:
         ball.seth(r.randint(-30,30))
@@ -56,6 +60,7 @@ def resetBall():
         ball.seth(r.randint(150,210))
 
 def collidePaddle(paddle,ball):
+    global speed
     if paddle.distance(ball)<20:
         ball.seth(180-ball.heading())
         if ball.xcor()>0:
@@ -63,6 +68,9 @@ def collidePaddle(paddle,ball):
         else:
             ball.setx(ball.xcor()+5)
         ball.fd(10)
+        if r.randint(0,1) == 1:
+            speed -= .5
+            ball.speed(speed)
 
 def up(paddle):
     if not(paddle.ycor() >= c.COURTHEIGHT/2-25): 
@@ -92,5 +100,5 @@ def moveBall():
         scoreR += 1
         updateScores()
         resetBall()
-    ball.fd(10)
+    ball.fd(speed)
     wn.ontimer(moveBall,10)

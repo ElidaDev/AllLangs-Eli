@@ -6,9 +6,7 @@ No ','
 3 characters
 UpperCase
 '''
-
-
-
+size = 2
 
 # return names in the leaderboard file
 def getNames(fileName = 'db.txt'):
@@ -104,11 +102,14 @@ def newLine(turtleObject):
 
 def drawMedal(color,turtleObject):
     turtleObject.showturtle()
-    turtleObject.setx(turtleObject.xcor()-25)
-    turtleObject.size(1)
+    turtleObject.penup()
+    turtleObject.sety(int(turtleObject.ycor())+50)
+    turtleObject.setx(int(turtleObject.xcor())-25)
     turtleObject.color(color)
     turtleObject.stamp()
-    turtleObject.setx(turtleObject.xcor()+25)
+    turtleObject.setx(int(turtleObject.xcor())+25)
+    turtleObject.sety(int(turtleObject.ycor())-50)
+    turtleObject.pendown()
     turtleObject.ht()
 # draw leaderboard and display a message to player
 def drawLeaderboard(highScorer, leaderNames, leaderScores, turtleObject, playerScore):
@@ -117,22 +118,24 @@ def drawLeaderboard(highScorer, leaderNames, leaderScores, turtleObject, playerS
     fontSetup = ("ComicSans", 20, "normal")
     turtleObject.clear()
     turtleObject.penup()
-    turtleObject.goto(-200, 100)
+    turtleObject.goto(-200, 75)
     turtleObject.hideturtle()
     turtleObject.down()
-    turtleObject.write("---Leader Board---", font = fontSetup)
+    turtleObject.color("blue")
+    turtleObject.write("---Leader Board---",font = fontSetup)
     newLine(turtleObject)
-
+    newLine(turtleObject)
     # TODO 14: loop through the lists and use the same index to display the corresponding name and score, separated by a tab space '\t'
     for i in range(len(leaderNames)):
         match i:
+            case 0:
+                drawMedal("gold",turtleObject)
             case 1:
-                drawMedal("gold",turtleObject)
+                drawMedal("silver",turtleObject)
             case 2:
-                drawMedal("grey",turtleObject)
-            case 3:
-                drawMedal("gold",turtleObject)
-        turtleObject.write(f"\n{i+1}.{leaderNames[i]}: {leaderScores[i]}",font = fontSetup)
+                drawMedal((.59,.30,0),turtleObject)
+        turtleObject.color("lime")
+        turtleObject.write(f"\n{i+1}.{leaderNames[i]}: {leaderScores[i]}\n",font = fontSetup)
         newLine(turtleObject)
     newLine(turtleObject)
 

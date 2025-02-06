@@ -3,6 +3,7 @@ import turtle as t
 import court as c
 
 wn = t.Screen()
+wn.setup(width=1.0,height=1.0)
 # wn.onkeypress(b.resetBall,"r")
 wn.onkeypress(lambda: b.up(b.leftPlayer),"w")
 wn.onkeypress(lambda: b.down(b.leftPlayer),"s")

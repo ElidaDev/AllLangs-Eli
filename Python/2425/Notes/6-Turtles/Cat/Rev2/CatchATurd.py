@@ -41,22 +41,42 @@ timeKeeper.color("goldenrod3")
 timeKeeper.teleport(-300,315)
 timeKeeper.ht()
 
+welcomeTurt = t.Turtle()
+welcomeTurt.color("green")
+welcomeTurt.teleport(300,350)
+welcomeTurt.write("Click the turtle to start!")
 score=0
-timer=10
+playing = True
+starting = True
+originalSize = 3
+size = originalSize
+timer=5
 interval=500
 fontSetup = ("Times New Roman", 30, "normal")
 
-playerName = "Testing"
-playing = True
 #---f(x)
 #every command that is based on a mouse click MUST HAVE the x,y var passed in
 
 
 def moveturtle():
+    welcomeTurt.ht()
+    global size
+    global originalSize
+    global playing
+    playing= True
+    flashScreen()
+    turtle.color("red")
     turtle.stamp()
+    turtle.color("aquamarine")
     newX=r.randint(-290,290)
     newY=r.randint(-290,290)
     turtle.goto(newX,newY)
+    if size > ((originalSize/2)/2)/2:
+        size /= 2
+        turtle.shapesize(1*size,1*size)
+    else:
+        size = originalSize
+        turtle.shapesize(1*size,1*size)
 
 def updateScore():
     global score
@@ -69,6 +89,7 @@ def manageLeaderBoard(): #gameover/update HS
     global score
     highScorer = False
     if score > int(lb.getScores()[-1]):
+        playerName = input("Congratulations, you made the LeaderBoard, Please enter a name: ")
         lb.updateLeaderboard(lb.getNames(),lb.getScores(),playerName,score)
         highScorer = True
     lb.drawLeaderboard(highScorer,lb.getNames(),lb.getScores(),leaderBoardDrawer,score)
@@ -86,6 +107,13 @@ def updateTimer():
     else:
         timeKeeper.write(f"Time: {timer}",font=fontSetup)
         timeKeeper.getscreen().ontimer(updateTimer,interval)
+
+def flashScreen():
+    wn.bgpic("")
+    wn.bgcolor("red")
+    time.sleep(0.25)
+    wn.bgcolor("white")
+    wn.bgpic("background.gif")
 
 buffer = 15
 def click(mouseX,mouseY):  #add any features to this f(x) that trigger when turtle is clicked

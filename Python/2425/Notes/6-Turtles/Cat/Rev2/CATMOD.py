@@ -11,12 +11,12 @@ scoreKeep=t.Turtle()
 scoreKeep.teleport(250,350)
 scoreKeep.color("white")
 scoreKeep.ht()
-
+scoreKeep.setx()
 accuracyKeep = t.Turtle()
 accuracyKeep.teleport(0,350)
 accuracyKeep.color("white")
 accuracyKeep.ht()
-
+accuracyKeep.showturtle
 timeKeep=t.Turtle()
 timeKeep.teleport(-250,350)
 timeKeep.color("white")

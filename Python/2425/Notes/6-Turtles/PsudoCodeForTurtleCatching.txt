@@ -8,55 +8,12 @@ Background:
 screen = turtle.Screen()
 screen.setup(600,400)
 screen.bgpic('')
-____________________________________________________________________________________________________
-
-Keep track of accuracy:
-
-Variables:
-
-Hits = 0
-misses = 0
-
-on click turtle:
-	hits += 1
-
-on click canvas: 
-	misses +=1
-
-accuracy = f"{hits/misses*100}%"
 
 ____________________________________________________________________________________________________
 Main menu:
 
 	IDK RN tbh
 ____________________________________________________________________________________________________
-Shrink turtles on click:
-
-keep track of size with var
-size /= 2
-turtle.shapesize(size)	
-	
-____________________________________________________________________________________________________
-
-def flashScreen():
-	screen.color("red")
-	time.sleep(.5)
-	screen.bgpic('')
-
-On turtle move:
-	FlashScreen()
-____________________________________________________________________________________________________
-Check if user is in top 3
-def checkLB(userName):
-	match userName:
-		case leaderboard[0]:
-			return "Gold"
-		case leaderboard[1]:
-			return "Silver"
-		case leaderboard[2]:
-			return "Bronze"
-		case default:
-			return None
 
 ____________________________________________________________________________________________________
 Bonus: 3
@@ -70,5 +27,4 @@ points = [(-5, 0), (0, 10), (5, 0), (0, -10)]
 turtle.register_shape("star", points)
 t.shape("star")
 ____________________________________________________________________________________________________
-Bonus: 3 - make a turtle for each medal, by registering gifs of the medals to 3 predefined turtles, showing them on screen when the game is over
 		
