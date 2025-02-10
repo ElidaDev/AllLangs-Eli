@@ -9,10 +9,12 @@ wn.onkeypress(lambda: b.up(b.leftPlayer),"w")
 wn.onkeypress(lambda: b.down(b.leftPlayer),"s")
 wn.onkeypress(lambda: b.up(b.leftPlayer),"Up")
 wn.onkeypress(lambda: b.down(b.leftPlayer),"Down")
+wn.onkeypress(lambda: b.reset(), "space")
 
 b.updateScores()
 c.drawCourt()
 b.moveBall()
+b.resetBall()
 #Foreshadowing is a narrative device used as a warning or indication of (a future event).
 wn.listen()
 wn.mainloop()
