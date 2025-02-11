@@ -1,0 +1,42 @@
+body{
+    background-color: #F5F5F5;
+    color: #050505;
+    font-family: Verdana, Arial, sans-serif;
+    margin: 0; 
+}
+header{
+    background-color: #333;
+    color: #FFF;
+    padding: 20px;
+}
+h1{
+    text-align: center;
+    line-height: 200%;
+}
+h2{
+    font-size: 200%;
+}
+nav{
+    text-align: center;
+    font-weight: bold;
+}
+nav a{
+    text-decoration: none;
+}
+footer{
+    margin-left: auto;
+    margin-right: auto;
+    background-color:#333;
+    color: #FFF;
+    text-align: center;
+    width: 80%;
+}
+.bootcamp{
+    color: #40407A;
+    font-style: italic;
+}
+#wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width:80%;
+}

@@ -61,7 +61,7 @@ def reset():
         winner = False
         scoreL = 0
         scoreR = 0
-        speed=3
+        speed=originalspeed
         updateScores()
         resetBall()
 
@@ -123,7 +123,7 @@ def moveBall():
             updateScores()
             resetBall()
         ball.fd(10)
-        if r.randint(0,10) == 1:
+        if r.randint(0,7) == 1:
             movePaddle()
         wn.ontimer(moveBall,10)
     else:
