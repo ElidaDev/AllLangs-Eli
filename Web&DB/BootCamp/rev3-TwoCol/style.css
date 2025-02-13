@@ -1,0 +1,105 @@
+body{
+    background-color: #EFF8FB;
+    color: #050505;
+    font-family: Verdana, Arial, sans-serif;
+    margin: 0;
+}
+header{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZo0B1PkRUXFmvsH_4gcv4r7EA615ijqOOmw&s");
+    background-size: 100% 100%; /*stretch the image to 100% of the tag*/
+    height: 150px;
+    text-align: left;
+}
+h1{
+    line-height: 200%;
+    padding-top: 50px;
+    padding-left: 2em;
+    color:#F5F5F5;
+    text-shadow: 1px 1px 2px;  /*h-shadow v-shadow shadowWeight color*/
+}
+h2{
+    font-size: 200%;
+}
+nav{
+    text-align: center;
+    font-weight: bold;
+    padding:1em;
+    float: left;
+    width: 160px;
+}
+nav a{
+    text-decoration: none;
+    padding:1em;
+    display: block;
+    border: 3px solid #CCC;
+    margin-bottom: 1em;
+}
+nav a:link{color:#3F2860}
+nav a:visited{color: #497777}
+nav a:hover{color: #A26100;border: 3px inset #333333;}
+footer{
+    background-color: #074A6E;
+    font-size: .6em;
+    font-style: italic;
+    color:#F5F5F5;
+    padding: 20px 0;
+    text-align: center;
+}
+dt{
+    font-weight: bold;
+    font-size: 1.1em;
+}
+main{
+    padding-left: 2em;
+    padding-right: 2em;
+    display: block;
+    padding-top: 1em;
+    margin-left: 170px;
+}
+img{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/*classes*/
+.bootcamp{  /*apply a style to the company name*/
+    color: #40407A;
+    font-style: italic;
+}
+
+.one{
+    float: left;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.third{
+    width:33%;
+}
+.half{
+    width:49%;
+}
+.floatleft{
+    float: left;
+    margin-right: 4em;
+    margin-bottom: 1em;
+}
+/*id*/
+#wrapper{
+    margin-left: auto;
+    margin-right: auto;   /*margin-left and rt auto = center the content*/
+    width: 80%;
+    background-color:#F5F5F5;
+    min-width: 1000px;
+    max-width: 1280px;
+}
+#hero{
+    text-align: center;
+}
+#buildinghero{
+    width:200px;
+    height: 200px;
+    display:block;
+    margin: 1em auto;
+    background-image: url(Assets/BottomCode.jpg);
+}
