@@ -50,3 +50,11 @@ footer{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.25em;
 }
+@font-face {
+    font-family: 'old_english_text_mtregular';
+    src: url('oldenglishtextmt-webfont.woff2') format('woff2'),
+         url('oldenglishtextmt-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
