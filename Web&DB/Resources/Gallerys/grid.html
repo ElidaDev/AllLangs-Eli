@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Grid Gallery</title>
+        <meta name="description" content="">
+        <style>
+            body{
+                color:darkblue;
+            }
+            header{
+                color:black;
+                text-align: center;
+            }
+            img{
+                width: 200px;
+                height: 150px;
+                margin: 1em;
+                box-shadow: 10px 10px 10px #777777;
+            }
+            #gallery{
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 200px);
+                grid-template-rows: auto;
+                grid-gap:2em;
+                gap:2em;
+            }
+            *{box-sizing:border-box;}
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Grid Gallery</h1>
+        </header>
+        <nav>
+            <a href="index.html">Flex</a>
+            <a href="grid.html">Grid</a>
+            <a href="flexjc.html">Justify-EX</a>
+        </nav>
+        <div id="gallery">
+            <img src="Assets/black.webp" alt="Black image">
+            <img src="Assets/blue.webp" alt="Blue image">
+            <img src="Assets/green.webp" alt="Green image">    
+            <img src="Assets/pink.webp" alt="Pink image">
+            <img src="Assets/red.webp" alt="Red image">
+            <img src="Assets/yellow.webp" alt="Yellow image">    
+        </div>
+    </body>
+</html>
