@@ -1,0 +1,47 @@
+body{
+    background-color: #373737;
+}
+header{
+    padding: 5px;
+    text-align: center;
+    background-color: #373737;
+    color:#FFF;
+}
+h2{
+    text-align: center;
+}
+img{
+    height:  58.6px;
+    width: 250px;
+    margin-left: 2em;
+    margin-right: 2em;
+    box-shadow: 5px 5px 5px black;
+}
+footer{
+    text-align: center;
+    background-color: #373737;
+    color: #FFF;
+    font-size: 25px;
+    margin-top: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+#wrapper{
+    padding: 2em;
+    margin: 5%;
+    width: 80%;
+    background-color:#F5F5F5;
+}
+#home{
+    height:50px;
+    width:50px;
+    min-width: 50px;
+    box-shadow: 2px 2px 2px #373737
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1em;
+}
