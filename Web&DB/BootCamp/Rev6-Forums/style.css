@@ -570,5 +570,54 @@
     }
 }
 
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bolder;
+  }
+  tr:nth-of-type(odd){
+    background-color: #DDD;
+  }
+
+/*  Contact form */
+
+.contact{
+    padding: 80px 0;
+}
+.contact h2{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.contact form label{
+    display: block;
+    margin-bottom: 5px;
+}
+.contact form input,
+.contact form textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #CCC;
+}
+
+/* Buttons */
+button{
+    padding: 1em;
+    background-color: #007bff;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.025em;
+    border-radius: 1em;
+}
 /* global property or global var */
 * {box-sizing: border-box;}

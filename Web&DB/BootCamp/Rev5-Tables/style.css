@@ -570,5 +570,23 @@
     }
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bolder;
+  }
+  tr:nth-of-type(odd){
+    background-color: #DDD;
+  }
+
 /* global property or global var */
 * {box-sizing: border-box;}
