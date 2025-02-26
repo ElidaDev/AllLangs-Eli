@@ -1,0 +1,623 @@
+/* Desktop mode or full screen */
+@media(min-width:1024px){
+    body{
+        background-color:#074A6E;
+        color: #050505;
+        font-family: Verdana, Arial, sans-serif;
+        margin: 0;
+    }
+    header{
+        background-image: url("assets/Banner.JPG");
+        background-size: 100% 100%; /*stretch the image to 100% of the tag*/
+        color:#F5F5F5;
+        font-size: 120%;
+        margin-top: 50px;
+        min-height: 200px;
+    }
+    header a:link{text-decoration: none;display: block;color: #F5F5F5;}
+    header a:visited{text-decoration: none;display: block;color: #F5F5F5;}
+    header a:hover{text-decoration: none;display: block;color: #F5F5F5;}
+    h1{
+        line-height: 200%;
+        padding-top: 50px;
+        padding-left: 2em;
+    }
+    h2{
+        font-size: 200%;
+    }
+    nav{
+        position: fixed;  /* no moving when flexing... */
+        top:0;
+        left: 0;
+        text-align: right;
+        padding: .5em;
+        padding-right: 0;
+        width: 100%;
+        background-color: aliceblue;
+        margin:0;
+        z-index: 9999; /*this will make sure it is ALWAYS on top*/
+    }
+    nav a{
+        text-align: center;
+        text-decoration: none;
+        display: block;
+    }
+    /*event handler styling - interact with tag, something happens*/
+    nav a:link{color:#3F2860}
+    nav a:visited{color:#497777}
+    nav a:hover{color: #A26100;border:3px inset #333333;}
+    nav ul{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        margin: 0;
+        font-size: 1.2em;
+        list-style-type: none;
+    }
+    nav li{
+        width: 7em;
+        padding: 0 1em 0 1em;  /*top right bottom left*/
+        display: inline;
+    }
+    footer{
+        background-color: #074A6E;
+        font-size: .6em;
+        font-style: italic;
+        color:#F5F5F5;
+        padding: 1em;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    dt{
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+    
+    /*classes*/
+    .bootcamp{  /*apply a style to the company name*/
+        color: #40407A;
+        font-style: italic;
+    }
+    .home{
+        height: 30vh;
+        padding-left: 8em;
+        padding-right: 5em;
+    }
+    .content{
+        height: 20vh;
+        padding-left: 8em;
+        padding-right: 5em;
+    }
+    .one{
+        float:left;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    .third{
+        width: 33%;
+    }
+    .half{
+        width: 49%;
+    }
+    .floatleft{
+        float:left;
+        margin-right: 4em;
+        margin-bottom: 1em;
+    }
+
+    /*id*/
+    /* id section */
+    #wrapper{   
+        padding: 2em;
+        margin: auto;
+        width:80%;
+        background-color: #F5F5F5;
+    }
+    #hero{
+        text-align: center;
+    }
+    #webInstructorHero{
+        background-image: url(Assets/WebDevInstructor.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 300px;
+        display: block;
+        padding-bottom:1em;
+    }
+    #pythonInstructorHero{
+        background-image: url(Assets/PythonInstructor.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 300px;
+        display: block;
+        padding-bottom:1em;
+    }
+    #dataInstructorHero{
+        background-image: url(Assets/DataSciInstructor.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 300px;
+        display: block;
+        padding-bottom:1em;
+    }
+    #mobile{
+        display: none;   /* tag is invisible */
+    }
+    #desktop{
+        display: inline;   /* tag is visible */
+    }
+    #flow{
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    /* Courses & Workshops Section Styles */
+    .courses, 
+    .workshops {
+        padding: 80px 0;
+    }
+    .courses h2,
+    .workshops h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .course-grid,
+    .workshop-grid {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+    }
+    .course,
+    .workshop {
+        width: 30%;
+        margin-bottom: 30px; 
+        text-align: center;
+    }
+    .course img {
+        max-width: 300px;
+        height: 300px;
+        margin-bottom: 20px;
+    }
+    .course ul,
+    .workshop ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+    .course button{
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;  /*???*/
+    }
+    .container{
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+}
+
+/* Tablet mode or half screen */
+@media(max-width:1024px) and (min-width:600px){
+    body{
+        background-color:#074A6E;
+        color: #050505;
+        font-family: Verdana, Arial, sans-serif;
+        margin: 0;
+    }
+    header{
+        background-image: url("assets/Banner.JPG");
+        background-size: 100% 100%; /*stretch the image to 100% of the tag*/
+        color:#F5F5F5;
+        font-size: 120%;
+        margin-top: 50px;
+        min-height: 200px;
+        text-align: left;
+    }
+    header a:link{text-decoration: none;display: block;color: #F5F5F5;}
+    header a:visited{text-decoration: none;display: block;color: #F5F5F5;}
+    header a:hover{text-decoration: none;display: block;color: #F5F5F5;}
+    h1{
+        line-height: 150%;
+        padding-top: 30px;
+        padding-left: 2em;
+    }
+    h2{
+        font-size: 150%;
+    }
+    nav{
+        position: fixed;  /* no moving when flexing... */
+        top:0;
+        left: 0;
+        text-align: right;
+        padding: .5em;
+        padding-right: 0;
+        width: 100%;
+        background-color: aliceblue;
+        margin:0;
+        z-index: 9999; /*this will make sure it is ALWAYS on top*/
+    }
+    nav a{
+        text-align: center;
+        text-decoration: none;
+        display: block;
+    }
+    /*event handler styling - interact with tag, something happens*/
+    nav a:link{color:#3F2860}
+    nav a:visited{color:#497777}
+    nav a:hover{color: #A26100;border:3px inset #333333;}
+    nav ul{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        margin: 0;
+        font-size: 1em;
+        list-style-type: none;
+    }
+    nav li{
+        width: 7em;
+        padding: 0 1em 0 1em;  /*top right bottom left*/
+        display: inline;
+    }
+    footer{
+        background-color: #074A6E;
+        font-size: .6em;
+        font-style: italic;
+        color:#F5F5F5;
+        padding: 1em;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /*classes*/
+    .bootcamp{  /*apply a style to the company name*/
+        color: #40407A;
+        font-style: italic;
+    }
+    .home{
+        height: 25vh;
+        padding-left: 8em;
+        padding-right: 5em;
+    }
+    .content{
+        height: 20vh;
+        padding-left: 8em;
+        padding-right: 5em;
+    }
+    .one{
+        float: left;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    .third{
+        width: 33%;
+    }
+    .half{
+        width: 49%;
+    }
+    .floatleft{
+        float:left;
+        margin-right: 4em;
+        margin-bottom: 1em;
+    }
+
+    /*id*/
+    /* id section */
+    #wrapper{   
+        padding: 2em;
+        margin: auto;
+        width:95%;
+        background-color: #F5F5F5;
+    }
+    #hero{
+        text-align: center;
+    }
+    #webInstructorHero{
+        background-image: url(Assets/WebDevInstructor.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 200px;
+        display: block;
+        padding-bottom:1em;
+    }
+    #pythonInstructorHero{
+        background-image: url(Assets/PythonInstructor.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 200px;
+        display: block;
+        padding-bottom:1em;
+    }
+    #dataInstructorHero{
+        background-image: url(Assets/DataSciInstructor.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 200px;
+        display: block;
+        padding-bottom:1em;
+    }
+    #mobile{
+        display: none;   /* tag is invisible */
+    }
+    #desktop{
+        display: inline;   /* tag is visible */
+    }
+    #flow{
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    /* Courses & Workshops Section Styles */
+    .courses, 
+    .workshops {
+        padding: 80px 0;
+    }
+    .courses h2,
+    .workshops h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .course-grid,
+    .workshop-grid {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+    }
+    .course,
+    .workshop {
+        width: 45%;
+        margin-bottom: 30px; 
+        text-align: center;
+    }
+    .course img {
+        max-width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    .course ul,
+    .workshop ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+    .course button{
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;  /*???*/
+    }
+}
+
+/* Mobile mode */
+@media(max-width:600px){
+    body{
+        background-color:#074A6E;
+        color: #050505;
+        font-family: Verdana, Arial, sans-serif;
+        margin: 0;
+    }
+    header{
+        background-image: url("assets/Banner.JPG");
+        background-size: 100% 100%; /*stretch the image to 100% of the tag*/
+        color:#F5F5F5;
+        font-size: 100%;
+        margin-top: 0px;
+        min-height: 75px;
+        text-align: left;
+    }
+    header a:link{text-decoration: none;display: block;color: #F5F5F5;}
+    header a:visited{text-decoration: none;display: block;color: #F5F5F5;}
+    header a:hover{text-decoration: none;display: block;color: #F5F5F5;}
+    h1{
+        line-height: 100%;
+        padding-top: 25px;
+        padding-left: 2em;
+        font-size: small;
+    }
+    h2{
+        font-size: 100%;
+    }
+    nav{
+        position: static;  
+        top:0;
+        left: 0;
+        text-align: center;
+        padding: .5em;
+        padding-right: 0;
+        width: 100%;
+        background-color: aliceblue;
+        margin:0;
+        z-index: 9999; /*this will make sure it is ALWAYS on top*/
+    }
+    nav a{
+        text-align: center;
+        text-decoration: none;
+        display: block;
+    }
+    /*event handler styling - interact with tag, something happens*/
+    nav a:link{color:#3F2860}
+    nav a:visited{color:#497777}
+    nav a:hover{color: #A26100;border:3px inset #333333;}
+    nav ul{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin: 0;
+        font-size: .8em;
+        list-style-type: none;
+    }
+    nav li{
+        width: auto;
+        padding: 0 1em 0 1em;  /*top right bottom left*/
+        display: inline;
+    }
+    footer{
+        background-color: #074A6E;
+        font-size: .6em;
+        font-style: italic;
+        color:#F5F5F5;
+        padding: 1em;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /*classes*/
+    .bootcamp{  /*apply a style to the company name*/
+        color: #40407A;
+        font-style: italic;
+    }
+    .home,.content{
+        height: auto;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    .floatleft{
+        float:left;
+        margin-right: 2em;
+        margin-bottom: 1em;
+    }
+
+    /*id*/
+    /* id section */
+    #wrapper{   
+        padding: 2em;
+        margin: auto;
+        width:100%;
+        background-color: #F5F5F5;
+    }
+    #hero{
+        text-align: center;
+    }
+    #buildinghero{
+        background-image: url("assets/OurBuilding.jpg");
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin: 1em auto;
+    }
+    #mobile{
+        display: inline;   /* tag is invisible */
+    }
+    #desktop{
+        display: none;   /* tag is visible */
+    }
+    #flow{
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    /* Courses & Workshops Section Styles */
+    .courses, 
+    .workshops {
+        padding: 80px 0;
+    }
+    .courses h2,
+    .workshops h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .course-grid,
+    .workshop-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+    }
+    .course,
+    .workshop {
+        width: 100%;
+        margin-bottom: 30px; 
+        text-align: center;
+    }
+    .course img {
+        max-width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    .course ul,
+    .workshop ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+    .course button{
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;  /*???*/
+    }
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bolder;
+  }
+  tr:nth-of-type(odd){
+    background-color: #DDD;
+  }
+
+/*  Contact form */
+
+.contact{
+    padding: 80px 0;
+}
+.contact h2{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.contact form label{
+    display: block;
+    margin-bottom: 5px;
+}
+.contact form input,
+.contact form textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #CCC;
+}
+
+/* Buttons */
+button{
+    padding: 1em;
+    background-color: #007bff;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.025em;
+    border-radius: 1em;
+}
+/* global property or global var */
+* {box-sizing: border-box;}
