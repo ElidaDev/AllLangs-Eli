@@ -13,8 +13,6 @@ h2{
 img{
     height:  58.6px;
     width: 250px;
-    margin-left: 2em;
-    margin-right: 2em;
     box-shadow: 5px 5px 5px black;
 }
 footer{
@@ -42,6 +40,20 @@ footer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 1em;
+}
+.flex-card{
+    width: 25%;
+    min-width: 250px;
+    margin-bottom:30px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+.flex-card img,
+.flex-card a{
+    max-width: 100%;
+    margin-bottom: 10px;
 }
