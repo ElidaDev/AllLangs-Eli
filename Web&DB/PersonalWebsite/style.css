@@ -10,6 +10,33 @@ header{
 h2{
     text-align: center;
 }
+dl{
+    font-weight: bold;
+    font-size: x-large;
+    padding-top: 1em;
+    text-align: center;
+}
+dl dt{
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top:1px solid #373737;
+    margin-top: 1em;
+}
+dl a{
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #373737;
+}
+dl a:hover{
+    text-decoration: underline blue;
+    color: black;
+}
 img{
     height:  58.6px;
     width: 250px;
