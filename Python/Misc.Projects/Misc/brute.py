@@ -6,6 +6,7 @@ import itertools
 passw = 1234
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 digits = int(input("How many digits is the code? "))
+print("TYPE OR CLICK DO NOT WORK ON THIS EXAMPLE, CLICK REQUIRES IMAGEs.")
 entry_method = input("Type or click or Test? ")
 max_value = int("9" * digits)
 
@@ -44,7 +45,16 @@ if entry_method == "Click":
             pag.click(ex, ey)
 
 if entry_method == "Test":
-    pass
-    #start timer,
-    #simulate typing in the passwords 1by1 like lines20-30
-    #if the simulated pass code == passw stop timer, print time it took to guess
+    start_time = time.time()  # Start the timer
+    
+    for i in range(max_value + 1):  # Include the maximum value in the range
+        if kbrd.is_pressed('q'):
+            break
+        code = str(i).zfill(digits)
+        
+        if int(code) == passw:
+            end_time = time.time()  # Stop the timer
+            elapsed_time = end_time - start_time  # Calculate time taken
+            print("Password found:", code)
+            print("Time taken:", elapsed_time, "seconds")
+            break

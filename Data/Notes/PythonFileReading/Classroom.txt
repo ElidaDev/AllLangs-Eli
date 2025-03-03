@@ -1,0 +1,10 @@
+00001111, Mike
+00010111, Riley
+00100001, Eli
+00000101, Ezra
+00000011, Deggvin
+00000011, Scott
+00000111, Johana
+00100011, Wesley
+00001001, Nolan
+0, Bander

@@ -23,7 +23,7 @@ selection = {
 def drawBoard(board):
     for r in range(3):
         print(f"{board[r][0]}|{board[r][1]}|{board[r][2]}")
-        print(f"-"*5)
+        print(f"-"*15)
     pass
 
 def checkDraw(board):
