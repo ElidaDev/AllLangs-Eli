@@ -1,3 +1,5 @@
 Scott's Profile
         Student Id: 3
+        Gpa: 2.00
+        Favorite Color: Pink
         

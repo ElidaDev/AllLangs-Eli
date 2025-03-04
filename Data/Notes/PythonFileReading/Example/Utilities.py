@@ -131,7 +131,7 @@ def removeData(fileName,Data):
             out+=EntireFile[i]
         file.write(out)
         file.close()
-        
+
 def findData(fileName,Data):
     EntireFile = readFile(fileName)
 

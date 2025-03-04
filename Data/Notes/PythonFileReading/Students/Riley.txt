@@ -1,3 +1,5 @@
 Riley's Profile
         Student Id: 23
+        Gpa: 0.80
+        Favorite Color: Chartreuse
         

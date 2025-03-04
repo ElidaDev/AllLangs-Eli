@@ -1,3 +1,5 @@
 Wesley's Profile
         Student Id: 35
+        Gpa: 0.90
+        Favorite Color: Grey
         

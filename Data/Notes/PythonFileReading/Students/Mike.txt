@@ -1,3 +1,5 @@
 Mike's Profile
         Student Id: 15
+        Gpa: 2.00
+        Favorite Color: Green
         

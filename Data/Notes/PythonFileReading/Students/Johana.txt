@@ -1,3 +1,5 @@
 Johana's Profile
         Student Id: 7
+        Gpa: 1.60
+        Favorite Color: Yellow
         

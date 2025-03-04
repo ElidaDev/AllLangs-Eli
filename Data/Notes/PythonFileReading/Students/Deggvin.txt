@@ -1,3 +1,5 @@
 Deggvin's Profile
         Student Id: 6
+        Gpa: 4.00
+        Favorite Color: Blue
         

@@ -1,3 +1,5 @@
 Nolan's Profile
         Student Id: 9
+        Gpa: 1.20
+        Favorite Color: Blue
         

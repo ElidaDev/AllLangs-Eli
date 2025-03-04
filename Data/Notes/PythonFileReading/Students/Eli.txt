@@ -1,3 +1,5 @@
 Eli's Profile
         Student Id: 33
+        Gpa: 3.00
+        Favorite Color: Cyan
         

@@ -1,3 +1,5 @@
 Ezra's Profile
         Student Id: 5
+        Gpa: 1.80
+        Favorite Color: Red
         
