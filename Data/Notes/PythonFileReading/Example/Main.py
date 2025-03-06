@@ -10,7 +10,7 @@ for eachLine in entireFile:
     name.replace("\n","")
     score.replace("\n","")
     try:
-        scores.append(int(score) if score.isdecimal else "")
+        scores.append(int(score))
         names.append(name)
     except ValueError:
         print(f"Bad Data: {eachLine}")
@@ -21,7 +21,7 @@ maxIndex = scores.index(max(scores))
 minIndex = scores.index(min(scores))
 
 
-print(f"{names[maxIndex]}: {scores[maxIndex]}")
+print(f"1. {names[minIndex]}: {scores[minIndex]}")
 
 
 
