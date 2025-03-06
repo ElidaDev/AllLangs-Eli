@@ -7,6 +7,7 @@ TempDf = pd.read_csv("Data/temperature_data.csv",header=0)
 
 #Replaces -99.99 in Anomalys with NAN
 TempDf["Anomaly"]= TempDf["Anomaly"].replace(-99.99,math.nan)
+TempDf["Year"]=TempDf["Year"].replace()
 #Removes NANS from the data 
 TempDf.dropna(subset=["Anomaly"],inplace=True)
 
@@ -19,7 +20,11 @@ b, a = np.polyfit(TempDf["Year"], TempDf["Anomaly"], deg=1)
 plt.plot(TempDf["Year"], a + b * TempDf["Year"], color="k", lw=2.5)
 #Shows the graph
 
+#Only shows 1958-2019
+plt.xlim(1958,2019)
 #REQUIRED FOR ASSIGNMENTS
+
+
 plt.title(" Temperature Anomaly Over time")
 plt.ylabel(" Temperature Anomalies")
 plt.xlabel("Years")
