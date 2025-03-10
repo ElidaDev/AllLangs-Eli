@@ -47,7 +47,7 @@ for i in range(len(reductions)):
 # plt.ylabel("% Reduced")
 # plt.ylim(30,35)
 # plt.show()
-
+print(count)
 plt.bar(range(1,8),count)
 plt.title("Harry MENTION!")
 plt.xlabel("Book")
