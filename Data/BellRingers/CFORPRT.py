@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 df = pd.read_csv("Data/EstoreData.csv")
+
 #1   , 2, 3   , 4   , 5         , 6              , 7  , 8  , 9        , 10
 #time,ip,email,state,phoneNumber,textNotification,card,cost,department,company
 
@@ -11,11 +12,6 @@ spendings = []
 
 departments = list(df["department"].unique())
 
-#Cleaning up non departments
-departments.pop(22)
-departments.pop(-1)
-
-# print(departments)
 for eachDepartment in departments:
     spending = 0
     for i in range(len(df)):
@@ -34,7 +30,7 @@ for i in range(len(spendings)):
 # plt.ylim(1500000,2500000)
 # plt.ylabel("Cost")
 # plt.xlabel("Department")
-
+# plt.xticks(rotation=45)
 # plt.show()
         
 spendings.sort(reverse=True)
