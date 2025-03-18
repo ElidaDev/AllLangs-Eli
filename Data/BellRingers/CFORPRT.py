@@ -36,21 +36,18 @@ for i in range(len(spendings)):
 spendings.sort(reverse=True)
 d = []
 c = []
-for i in range(len(spendings)-5,len(spendings)):
+print(spendings)
+print(len(spendings))    
+for i in range(22-5,22):
     c.append([spendings[i][0]])
     d.append([spendings[i][1]])
 for i in range(6):
     c.append([spendings[i][0]])
     d.append([spendings[i][1]])
 
-
+print(d,c)
 plt.plot(d, c, marker='o', linestyle='-', color='b', label="Total Purchase Amount")
-
-
-# Adding labels and title
-plt.xlabel("Departments")
-plt.ylabel("Total Purchase Amount")
-plt.title("Top 5 and Bottom 5 Departments by Purchase Amount")
-plt.xticks(rotation=45)  # Rotate x labels for better readability
+plt.xlabel("Purchase Amount")
+plt.ylabel("Category")
 plt.legend()
-plt.grid(True)
+plt.show()
