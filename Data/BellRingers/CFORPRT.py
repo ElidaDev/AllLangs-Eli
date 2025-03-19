@@ -30,24 +30,26 @@ for i in range(len(spendings)):
 # plt.ylim(1500000,2500000)
 # plt.ylabel("Cost")
 # plt.xlabel("Department")
-# plt.xticks(rotation=45)
+
 # plt.show()
         
 spendings.sort(reverse=True)
 d = []
 c = []
 print(spendings)
-print(len(spendings))    
-for i in range(22-5,22):
-    c.append([spendings[i][0]])
-    d.append([spendings[i][1]])
+print(len(spendings))  
 for i in range(6):
-    c.append([spendings[i][0]])
-    d.append([spendings[i][1]])
+    c.append(float(spendings[len(spendings)-i-1][0]))
+    d.append(str(spendings[len(spendings)-i-1][1]))
+for i in range(6):
+    c.append(float(spendings[i][0]))
+    d.append(str(spendings[i][1]))
 
 print(d,c)
-plt.plot(d, c, marker='o', linestyle='-', color='b', label="Total Purchase Amount")
+plt.bar(d, c, label="Total Purchase Amount")
 plt.xlabel("Purchase Amount")
 plt.ylabel("Category")
-plt.legend()
+# plt.legend()
+plt.ylim(1750000,2300000)
+plt.xticks(rotation=45)
 plt.show()
