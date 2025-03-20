@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 import matplotlib.pyplot as plt
 df = pd.read_csv("Data/EstoreData.csv")
 
@@ -11,45 +12,16 @@ df = pd.read_csv("Data/EstoreData.csv")
 spendings = []
 
 departments = list(df["department"].unique())
+#0, 192, 127, or 255 at the start of the string before the first .
+# ^ start of string , (x|y|z) x y or z, \. matches the . at the end of the numbers 
+pattern = r"\@"
+# Remove rows where 'ip' matches the pattern list comprehension, learned back when we were doing basic lists, it basically means if ip not match pattern keep it in the list, its similar to dictionairy comprehension.
+df = df[~df["ip"].str.match(pattern)]
 
-for eachDepartment in departments:
-    spending = 0
-    for i in range(len(df)):
-        if df["department"][i]== eachDepartment:
-            spending += float(df["cost"][i])
-    spendings.append([spending,eachDepartment])
-costs =[]
-depts =[]
-for i in range(len(spendings)):
-    costs.append(spendings[i][0])
-    depts.append(spendings[i][1])
-
-# print(costs,"\n",depts)
-# plt.bar(depts,costs)
-# plt.title("Costs per department")
-# plt.ylim(1500000,2500000)
-# plt.ylabel("Cost")
-# plt.xlabel("Department")
-
-# plt.show()
-        
-spendings.sort(reverse=True)
-d = []
-c = []
-print(spendings)
-print(len(spendings))  
-for i in range(6):
-    c.append(float(spendings[len(spendings)-i-1][0]))
-    d.append(str(spendings[len(spendings)-i-1][1]))
-for i in range(6):
-    c.append(float(spendings[i][0]))
-    d.append(str(spendings[i][1]))
-
-print(d,c)
-plt.bar(d, c, label="Total Purchase Amount")
-plt.xlabel("Purchase Amount")
-plt.ylabel("Category")
-# plt.legend()
-plt.ylim(1750000,2300000)
-plt.xticks(rotation=45)
-plt.show()
+# Calculate spending by department  using . sum adds all the costs per department, and then resets the index back to being in order using .reset_index()
+spendingsDf = df.groupby('department')['cost'].sum().reset_index()
+# Convert to list
+# Found itterrows while looking through the docs
+spendings = []
+for i, row in spendingsDf.iterrows():
+    spendings.append([row['cost'], row['department']])

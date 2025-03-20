@@ -1,0 +1,131 @@
+<head>
+     <!--this would be ran before anything loads
+          run scripts that gets info the body needs-->
+     <script>
+          //this is a single line comment
+          /*
+               like under here
+               utilizes CSS style of commenting
+          */
+          //print("hello world");
+          console.log("hello world");
+
+          //THIS SECTION IS FOR IO
+          //alert("hi this is an alert!");
+          //alert("hi this is another alert!");
+          //input()
+          //prompt("Give me some input")
+
+          //VARIABLES!!!
+          //name=input("what is your name")
+          //var is to declare a variable
+          /*var name = prompt("What is your name")
+          //alert(name);let name2 = "steve";alert(name2);const name3 = "bill";alert(name3)
+          name = "sally"
+          //alert(name)
+          name=4
+             
+               var = regular or general variable
+               let = local variable, just let this exist in this scope
+               const = constant and doesn't change
+
+               IF you reuse a variable, you need to be sure to not redeclare the variable
+          */
+
+          //CONDITIONAL STATEMENTS
+          var x = 6
+          var y = 4
+          var z = 3
+
+          //if x==y:  python didn't care about () in conditional statement
+          //if x!=y:
+          //if not(x==y):  Python only
+          if(x==y){
+               console.log("they're the same!")
+          }
+          //elif(x>y):
+          else if(x>y){
+               console.log("x is greater than y")
+          }
+          else{
+               console.log("y is greater than x")
+          }
+          //and and or or python
+          if(x==y && x==z){
+               console.log("they're the same!")
+          }
+          if(x>y || x>z){                              //pipe pipe
+               console.log("x is greater than y or z")
+          }else if(z>y && z> x){
+               console.log("z is the greatest")
+          }else{
+               console.log("hi")
+          }
+
+          /*
+               one = means assigning a value to a var
+               two = means checking if values are the same
+               three = means checking if objects are the same
+          */
+
+
+          //LOOPS
+          //FOR
+          //for i in range(10):
+          //for(let i equal 0; go until i <10; increase i by 1 each time)
+          for(let i=0;i<10;i++){     //countup
+               alert(i);
+          }
+          for(let i=10;i>0;i--){     //countdown
+               alert(i)
+          }
+
+          //WHILE
+          let i=0;
+          while(i<10){
+               alert(i);
+               i++;
+          }
+
+          //FUNCTION
+          //create a f(x) to check if input is a num
+          //def isNumeric(x):          
+          function isNumeric(num){
+               //isNan - is not a number
+               //parseFloat - converts to a float
+               //isFinite - actual number and not imginary or concept
+               return !isNaN(parseFloat(num) && isFinite(num))
+          }
+
+          console.log(isNumeric(4))
+          console.log(isNumeric("4"))
+          console.log(isNumeric("four"))
+
+          function guessWhat(){
+               var ui = prompt("guess what")
+               while(ui!="what"){
+                    ui = prompt("guess what")
+               }
+               alert("chicken butt")
+          }
+          guessWhat()
+
+          
+
+
+
+
+
+     </script>
+</head>
+<body>
+     <p>Hey this is a JS playground...  go check the console!</p>
+     <!--this would be ran with the body
+          run scripts when something in the body does something-->
+     <script>
+     </script>
+</body>
+<!--this would be ran last
+     run scripts that are like onClick f(x)-->
+<script>
+</script>
