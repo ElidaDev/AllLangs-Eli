@@ -1,3 +1,5 @@
+
+
 -- Select the database to use
 USE exampledb;
 -- Create the Contacts table only if it doesn't exist
@@ -43,9 +45,12 @@ ALTER TABLE Contacts ADD GamerTag VARCHAR(255);
 UPDATE Contacts SET GamerTag = "Grrrraeaat1952" WHERE LastName = "Tiger";
 
 
-CREATE TABLE IF NOT EXISTS States (
-    Id INT NOT NULL AUTO_INCREMENT,
-    State VARCHAR(2),
-    PRIMARY KEY (Id),
-    UNIQUE KEY (state)
-);
+CREATE TABLE States (Id INT NOT NULL AUTO_INCREMENT,State VARCHAR(100),PRIMARY KEY (Id),UNIQUE KEY (state));
+
+Insert INTO States (state) VALUES (('Alabama'),('Alaska'),('Arizona'),('Arkansas'),('California'),('Colorado'),('Connecticut'),('Delaware'),('Florida'),('Georgia'),('Hawaii'),('Idaho'),('Illinois'),('Indiana'),('Iowa'),('Kansas'),('Kentucky'),('Louisiana'),('Maine'),('Maryland'),('Massachusetts'),('Michigan'),('Minnesota'),('Mississippi'),('Missouri'),('Montana'),('Nebraska'),('Nevada'),('New Hampshire'),('New Jersey'),('New Mexico'),('New York'),('North Carolina'),('North Dakota'),('Ohio'),('Oklahoma'),('Oregon'),('Pennsylvania'),('Rhode Island'),('South Carolina'),('South Dakota'),('Tennessee'),('Texas'),('Utah'),('Vermont'),('Virginia'),('Washington'),('West Virginia'),('Wisconsin'),('Wyoming'));
+ALTER TABLE Contacts ADD Id VARCHAR(255);
+
+ALTER TABLE Contacts ADD StateId INT;
+UPDATE Contacts SET StateId = 1 WHERE LastName = "King";
+UPDATE Contacts SET StateId = 3 WHERE LastName = "Hopper";
+UPDATE Contacts SET StateId = 6 WHERE LastName = "Knuth";
