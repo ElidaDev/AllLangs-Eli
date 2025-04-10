@@ -1,0 +1,29 @@
+.pink{
+    background-color:#E29284 ;
+    color: #FFF;
+}
+.white{
+    background-color: #FFF ;
+    
+}
+.white p{
+    color:#4A5568;
+}
+.flex-card{
+    width: 25%;
+    min-width: 250px;
+    margin-bottom:30px;
+    padding: 20px;
+    text-align: center;
+    float: inline-start;
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 1em;
+}
+*{
+    color:#FFF;
+}
