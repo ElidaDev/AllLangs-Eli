@@ -1,7 +1,7 @@
 import pandas
         
 def importWords():
-    words = ["Binary","Computer","Hexadecimal","Bander","Powershell","Apps","Duck","VSC","Poptarts"]
+    words = ["WebSites"] #"Binary","Computer","Hexadecimal","Bander","Powershell","Apps","Duck","VSC","Poptarts",
     return words
 
 def importBoard():
@@ -108,6 +108,44 @@ def searchDiagonallyLeft(board, word, rows, cols):
 
     return None
 
+def Boggle(board, word, rows, cols):
+    directions = [ 
+        (0, 1),   
+        (0, -1),  
+        (1, 0),   
+        (-1, 0),  
+        (1, 1),   
+        (-1, -1), 
+        (-1, 1),  
+        (1, -1)   
+    ]
+
+    for r in range(rows):
+        for c in range(cols):
+            if str(board.iloc[r, c]).upper() == word[0].upper():
+                for dx, dy in directions:
+                    match = True
+                    points =[]
+                    print()
+                    for i in range(len(word)):
+                        nr = r + (dx * i)
+                        nc = c + (dy * i)
+                        if (nr >= 0 and nr < rows) and (nc >= 0) and (nc < cols):
+                            if str(board.iloc[nr, nc]).upper() == word[i].upper():
+                                print(word[i])
+                                points.append([nr,nc])
+                            else:
+                                match = False
+                                break
+                        else:
+                            match = False
+                            break
+                    if match:
+                        return (r, c, points)  
+
+    return None
+
+
 '''
 Binary (vert normal)
 Computer (diagonal downToRight)
@@ -133,6 +171,10 @@ Original Board
 
 for word in words:
     word = word.upper()
+    search = Boggle(board,word,rows,cols)
+    if search:
+        print(search[2])
+        print()
     search = searchHorizontally(board, word, rows, cols)
     if search:
         flip = search[2]
@@ -165,7 +207,7 @@ for word in words:
                     else:    
                         print(f"Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])+len(word)+1}")
                 else:
-                    print(search)
+                    pass
                 
 
 print(f'''
