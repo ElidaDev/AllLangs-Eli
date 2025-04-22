@@ -171,10 +171,10 @@ Original Board
 
 for word in words:
     word = word.upper()
-    search = Boggle(board,word,rows,cols)
-    if search:
-        print(search[2])
-        print()
+    # search = Boggle(board,word,rows,cols)
+    # if search:
+    #     print(search[2])
+    print()
     search = searchHorizontally(board, word, rows, cols)
     if search:
         flip = search[2]
