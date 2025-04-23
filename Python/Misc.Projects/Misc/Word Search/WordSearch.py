@@ -1,7 +1,7 @@
 import pandas
         
 def importWords():
-    words = ["WebSites"] #"Binary","Computer","Hexadecimal","Bander","Powershell","Apps","Duck","VSC","Poptarts",
+    words = ["WEBSITES"] #"Binary","Computer","Hexadecimal","Bander","Powershell","Apps","Duck","VSC","Poptarts",
     return words
 
 def importBoard():
@@ -110,40 +110,55 @@ def searchDiagonallyLeft(board, word, rows, cols):
 
 def Boggle(board, word, rows, cols):
     directions = [ 
-        (0, 1),   
-        (0, -1),  
-        (1, 0),   
-        (-1, 0),  
-        (1, 1),   
-        (-1, -1), 
-        (-1, 1),  
-        (1, -1)   
+        (0, 1),    # right
+        (0, -1),   # left
+        (1, 0),    # down
+        (-1, 0),   # up
+        (1, 1),    # down-right
+        (-1, -1),  # up-left
+        (-1, 1),   # up-right
+        (1, -1)    # down-left
     ]
+    visited = []
+
+    #Make a board of False
+    for i in range(rows):
+        visited.append([False] * cols)
 
     for r in range(rows):
         for c in range(cols):
-            if str(board.iloc[r, c]).upper() == word[0].upper():
-                for dx, dy in directions:
-                    match = True
-                    points =[]
-                    print()
-                    for i in range(len(word)):
-                        nr = r + (dx * i)
-                        nc = c + (dy * i)
-                        if (nr >= 0 and nr < rows) and (nc >= 0) and (nc < cols):
-                            if str(board.iloc[nr, nc]).upper() == word[i].upper():
-                                print(word[i])
-                                points.append([nr,nc])
-                            else:
-                                match = False
+            if str(board.iloc[r, c]).upper() == word[0]:# Find first letter
+                points = []
+                match = True
+                points.append([r, c]) # make sure first letter is in points
+                visited[r][c] = True 
+                for i in range(1, len(word)): #Start at the second letter, because we know the first one is good
+                    foundNext = False
+                    for dx, dy in directions:
+                        nr = r + dx
+                        nc = c + dy
+                        if nr >= 0 and nr < rows and nc >= 0 and nc < cols and not visited[nr][nc]: #Make sure it is within the rows and cols and it has not been visited already
+                            if str(board.iloc[nr, nc]).upper() == word[i]: #Check each letter
+                                points.append([nr, nc]) #Append the points if the letter is right
+                                #print(word[i]) #For debugging :)
+                                visited[nr][nc] = True #Set each letter that matches to true
+                                r, c = nr, nc  # Update the next letter's position
+                                foundNext = True 
                                 break
-                        else:
-                            match = False
-                            break
-                    if match:
-                        return (r, c, points)  
+                    if not foundNext:  # If no valid position was found, we try again
+                        match = False
+                        break
+                if match:
+                    return (r, c, points)
 
-    return None
+                # Reset visited grid for next search
+                for i in range(rows):
+                    for j in range(cols):
+                        visited[i][j] = False
+
+    return None # This hurt my brain i dont like boggle :cry face:
+
+
 
 
 '''
@@ -171,9 +186,6 @@ Original Board
 
 for word in words:
     word = word.upper()
-    # search = Boggle(board,word,rows,cols)
-    # if search:
-    #     print(search[2])
     print()
     search = searchHorizontally(board, word, rows, cols)
     if search:
@@ -191,7 +203,9 @@ for word in words:
             else:    
                 print(f"Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1}, at column {search[1]+1}")
         else:
-            search = searchDiagonallyRight(board, word, rows, cols)
+            search = False
+            #TODO: FIX RIGHT DIAGONAL!
+            #search = searchDiagonallyRight(board, word, rows, cols)
             if search:
                 flip = search[2]
                 if flip:
@@ -207,8 +221,12 @@ for word in words:
                     else:    
                         print(f"Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])+len(word)+1}")
                 else:
-                    pass
+                    print("Had to use boggle...")
+                    search = Boggle(board,word,rows,cols)
+                    if search:
+                        print(search[2])
                 
+
 
 print(f'''
       
