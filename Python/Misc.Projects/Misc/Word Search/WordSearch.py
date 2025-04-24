@@ -1,7 +1,7 @@
 import pandas
         
 def importWords():
-    words = ["WEBSITES"] #"Binary","Computer","Hexadecimal","Bander","Powershell","Apps","Duck","VSC","Poptarts",
+    words = ["Powershell","Apps","Duck","VSC","Poptarts","WebsiTes"] #"Binary","Computer","Hexadecimal","Bander"
     return words
 
 def importBoard():
@@ -49,41 +49,17 @@ def searchVerically(board,word,rows,cols):
                     break
             if match:
                 return (r, c,False)
-        for r in range(len(word)-1,rows): 
+        for r in range(rows - len(word),cols): 
             for i in range(len(word)):
                 match = True
                 if str(board.iloc[r-i, c]).upper() != word[i].upper(): # checks for word backwards
                     match = False
                     break
             if match:
-                return (r, c-len(word)+1,True)
+                return (r, c,True)
     return None
     
-def searchDiagonallyRight(board,word,rows,cols):
-    for r in range(rows):
-        # Forward search
-        for c in range(cols - len(word) + 1): 
-            if (r + len(word) <= rows) and (c + len(word) <= cols):
-                for i in range(len(word)):
-                    match = True
-                    # Down right
-                
-                    if str(board.iloc[r+i, c+i]).upper() != word[i].upper(): # checks for word forwards
-                        match = False
-                        break
-                    if match:
-                        return (r, c, False)
-                    #up right
-                for i in range(len(word) -1):
-                    match = True
-                    if str(board.iloc[r-i, c+i]).upper() != word[i].upper(): # checks for word backwards
-                        match = False
-                        break
-                    if match:
-                        return (r, c, True)
-    return None
-
-def searchDiagonallyLeft(board, word, rows, cols):
+def searchDiagonally(board, word, rows, cols):
     for r in range(rows):
         for c in range(cols):
             #  Down left
@@ -127,10 +103,10 @@ def Boggle(board, word, rows, cols):
 
     for r in range(rows):
         for c in range(cols):
-            if str(board.iloc[r, c]).upper() == word[0]:# Find first letter
+            if str(board.iloc[r, c]).upper() == word[0]:#Find first letter
                 points = []
                 match = True
-                points.append([r, c]) # make sure first letter is in points
+                points.append([r, c]) #Add first letter is in points
                 visited[r][c] = True 
                 for i in range(1, len(word)): #Start at the second letter, because we know the first one is good
                     foundNext = False
@@ -151,7 +127,7 @@ def Boggle(board, word, rows, cols):
                 if match:
                     return (r, c, points)
 
-                # Reset visited grid for next search
+                #Reset visited grid for next search
                 for i in range(rows):
                     for j in range(cols):
                         visited[i][j] = False
@@ -189,48 +165,33 @@ for word in words:
     print()
     search = searchHorizontally(board, word, rows, cols)
     if search:
+        print(f"Found {word} Horizontally.")
         flip = search[2]
         if flip:
-            print(f"Found '{word}' at row {search[0]+1}, from column {(search[1])+len(word)+1} to {search[1]+1} ")
+            print(f"1Found '{word}' at row {search[0]+1}, from column {(search[1])+len(word)} to {search[1]} + 1 ")
         else:    
-            print(f"Found '{word}' at row {search[0]+1}, from column {search[1]+1} to {(search[1])+len(word)+1}")
+            print(f"2Found '{word}' at row {search[0]+1}, from column {search[1]+1} to {(search[1])+len(word)}")
     else:
         search = searchVerically(board, word, rows, cols)
         if search:
+            print(f"Found {word} Vertically.")
             flip = search[2]
             if flip:
-                print(f"Found '{word}' from row {search[0]+1} {(search[0])+len(word)+1}, at column {search[1]+1} ")
+                print(f"Found '{word}' from row {search[0]} to {(search[0])-len(word)+1}, at column {search[1]+1} ")
             else:    
-                print(f"Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1}, at column {search[1]+1}")
+                print(f"Found '{word}' from row {search[0]} to {(search[0])+len(word)+1}, at column {search[1]+1}")
         else:
-            search = False
-            #TODO: FIX RIGHT DIAGONAL!
-            #search = searchDiagonallyRight(board, word, rows, cols)
+            search = searchDiagonally(board, word, rows, cols)
             if search:
+                print(f"Found {word} Diagonally.")
                 flip = search[2]
                 if flip:
-                    print(f"Found '{word}' from row {search[0]+1} {(search[0])+len(word)+1}, from column {(search[1])+len(word)+1} to {search[1]+1}")
+                    print(f"1Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1}, from column {(search[1])+len(word)+1} to {search[1]+1}")
                 else:    
-                    print(f"Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])+len(word)+1}")
+                    print(f"2Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])-len(word)+1}")
             else:
-                search = searchDiagonallyLeft(board, word, rows, cols)
+                print(f"Had to use boggle to find {word}")
+                search = Boggle(board,word,rows,cols)
                 if search:
-                    flip = search[2]
-                    if flip:
-                        print(f"Found '{word}' from row {search[0]+1} {(search[0])+len(word)+1}, from column {(search[1])+len(word)+1} to {search[1]+1}")
-                    else:    
-                        print(f"Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])+len(word)+1}")
-                else:
-                    print("Had to use boggle...")
-                    search = Boggle(board,word,rows,cols)
-                    if search:
-                        print(search[2])
+                    print(search[2])
                 
-
-
-print(f'''
-      
-Answer Board
-
-
-''')
