@@ -62,29 +62,50 @@ def searchVerically(board,word,rows,cols):
 def searchDiagonally(board, word, rows, cols):
     for r in range(rows):
         for c in range(cols):
-            #  Down left
-            if r + len(word) <= rows and c - len(word) + 1 >= 0:
+            # \ top-left to bottom-right
+            if r + len(word) <= rows and c + len(word) <= cols:
                 match = True
                 for i in range(len(word)):
-                    if str(board.iloc[r + i, c - i]).upper() != word[i].upper():
+                    if str(board.iloc[r + i, c + i]).upper() != word[i].upper():
                         match = False
                         break
                 if match:
                     return (r, c, False)
 
-            # Up left 
-            if r - len(word) + 1 >= 0 and c - len(word) + 1 >= 0:
+            # \ bottom-right to top-left
+            if r - len(word) >= -1 and c - len(word) >= -1:
                 match = True
                 for i in range(len(word)):
                     if str(board.iloc[r - i, c - i]).upper() != word[i].upper():
                         match = False
                         break
                 if match:
-                    return (r - len(word) + 1, c - len(word) + 1, True)
+                    return (r, c, False)
+
+            # / Up-Right (bottom-left to top-right)
+            if r - len(word) >= -1 and c + len(word) <= cols:
+                match = True
+                for i in range(len(word)):
+                    if str(board.iloc[r - i, c + i]).upper() != word[i].upper():
+                        match = False
+                        break
+                if match:
+                    return (r, c, True)
+
+            # / Down-Left (top-right to bottom-left)
+            if r + len(word) <= rows and c - len(word) >= -1:
+                match = True
+                for i in range(len(word)):
+                    if str(board.iloc[r + i, c - i]).upper() != word[i].upper():
+                        match = False
+                        break
+                if match:
+                    return (r, c, True)
 
     return None
 
-def Boggle(board, word, rows, cols):
+
+def Boggle(board, word, rows, cols):#
     directions = [ 
         (0, 1),    # right
         (0, -1),   # left
@@ -138,12 +159,12 @@ def Boggle(board, word, rows, cols):
 
 
 '''
-Binary (vert normal)
+Binary (vert normal) Good
 Computer (diagonal downToRight)
-Hexadecimal (horizontal backwards)
-Bander (horizontal normal)
+Hexadecimal (horizontal backwards) Good
+Bander (horizontal normal) Good 
 Powershell (diagonal upToLeft)
-Apps (vertical backwards)
+Apps (vertical backwards) Good
 Web Sites (Boggle)
 Duck (diagonal downToLeft)
 VSC (diagonal upToRight)
@@ -177,7 +198,7 @@ for word in words:
             print(f"Found {word} Vertically.")
             flip = search[2]
             if flip:
-                print(f"Found '{word}' from row {search[0]} to {(search[0])-len(word)+1}, at column {search[1]+1} ")
+                print(f"Found '{word}' from row {search[0]} to {(search[0])-len(word)-1}, at column {search[1]+1} ")
             else:    
                 print(f"Found '{word}' from row {search[0]} to {(search[0])+len(word)+1}, at column {search[1]+1}")
         else:
@@ -185,9 +206,9 @@ for word in words:
             if search:
                 print(f"Found {word} Diagonally.")
                 flip = search[2]
-                if flip:
+                if flip: # /
                     print(f"1Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1}, from column {(search[1])+len(word)+1} to {search[1]+1}")
-                else:    
+                else:   #\
                     print(f"2Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])-len(word)+1}")
             else:
                 print(f"Had to use boggle to find {word}")
