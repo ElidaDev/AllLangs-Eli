@@ -70,9 +70,9 @@ def searchDiagonally(board, word, rows, cols):
                         match = False
                         break
                 if match:
-                    return (r, c, False)
+                    return (r, c, False,True)
 
-            # \ bottom-right to top-left
+            # \ bottom-right to top-left Checked 
             if r - len(word) >= -1 and c - len(word) >= -1:
                 match = True
                 for i in range(len(word)):
@@ -80,9 +80,9 @@ def searchDiagonally(board, word, rows, cols):
                         match = False
                         break
                 if match:
-                    return (r, c, False)
+                    return (r, c, False, None)
 
-            # / Up-Right (bottom-left to top-right)
+            # / Up-Right (bottom-left to top-right) Checked
             if r - len(word) >= -1 and c + len(word) <= cols:
                 match = True
                 for i in range(len(word)):
@@ -90,7 +90,7 @@ def searchDiagonally(board, word, rows, cols):
                         match = False
                         break
                 if match:
-                    return (r, c, True)
+                    return (r, c, True, None)
 
             # / Down-Left (top-right to bottom-left)
             if r + len(word) <= rows and c - len(word) >= -1:
@@ -100,7 +100,7 @@ def searchDiagonally(board, word, rows, cols):
                         match = False
                         break
                 if match:
-                    return (r, c, True)
+                    return (r, c, False,False)
 
     return None
 
@@ -189,30 +189,35 @@ for word in words:
         print(f"Found {word} Horizontally.")
         flip = search[2]
         if flip:
-            print(f"1Found '{word}' at row {search[0]+1}, from column {(search[1])+len(word)} to {search[1]} + 1 ")
+            print(f"1Found '{word}' at row {search[0]+1}, from column {(search[1])+len(word)} to {search[1]}")
+
         else:    
             print(f"2Found '{word}' at row {search[0]+1}, from column {search[1]+1} to {(search[1])+len(word)}")
     else:
-        search = searchVerically(board, word, rows, cols)
+        search = Boggle(board,word,rows,cols)
         if search:
-            print(f"Found {word} Vertically.")
-            flip = search[2]
-            if flip:
-                print(f"Found '{word}' from row {search[0]} to {(search[0])-len(word)-1}, at column {search[1]+1} ")
-            else:    
-                print(f"Found '{word}' from row {search[0]} to {(search[0])+len(word)+1}, at column {search[1]+1}")
-        else:
-            search = searchDiagonally(board, word, rows, cols)
-            if search:
-                print(f"Found {word} Diagonally.")
-                flip = search[2]
-                if flip: # /
-                    print(f"1Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1}, from column {(search[1])+len(word)+1} to {search[1]+1}")
-                else:   #\
-                    print(f"2Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])-len(word)+1}")
-            else:
-                print(f"Had to use boggle to find {word}")
-                search = Boggle(board,word,rows,cols)
-                if search:
-                    print(search[2])
+             print(search[2])
+
+        # search = searchVerically(board, word, rows, cols)
+        # if search:
+        #     print(f"Found {word} Vertically.")
+        #     flip = search[2]
+        #     if flip:
+        #         print(f"Found '{word}' from row {search[0]} to {(search[0])-len(word)-1}, at column {search[1]+1} ")
+        #     else:    
+        #         print(f"Found '{word}' from row {search[0]} to {(search[0])+len(word)+1}, at column {search[1]+1}")
+        # else:
+        #     search = searchDiagonally(board, word, rows, cols)
+        #     if search:
+        #         print(f"Found {word} Diagonally.")
+        #         flip = search[2]
+        #         if flip: # Works for Top right to bottom left
+        #             print(f"1Found '{word}' from row {search[0]+len(word)} to {(search[0])+1}, from column {(search[1])+1} to {search[1]-len(word)+2}")
+        #         else:   # Works for Bottom right to top left \
+        #             if search[3] == None:
+        #                 print(f"2Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])-len(word)+1}")
+        #             if search[3]:
+        #                 print(f"3Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])-len(word)+1}")
+        #             if search[3] == False:
+        #                 print(f"4Found '{word}' from row {search[0]+1} to {(search[0])+len(word)+1},from column {search[1]+1} to {(search[1])-len(word)+1}")
                 
