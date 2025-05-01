@@ -1,7 +1,59 @@
 import pandas
         
 def importWords():
-    words = ["Powershell","Apps","Duck","VSC","Poptarts","WebsiTes"] #"Binary","Computer","Hexadecimal","Bander"
+    words =[
+    "Android", "Androidstudio", "Application", "Applicationprograminterface", "Array",
+    "Artificialinteligence", "Ascii", "Authentication", "Autonomous", "Backend",
+    "Bandwidth", "Bash", "Beier", "Bigdata", "Binary", "Bios", "Bit", "Bladerunner",
+    "Block", "Blockbase", "Blockbasecoding", "Blockly", "Bluepillattack", "Body",
+    "Boolean", "Booleanexpression", "Bootstrap", "Boyles", "Brandle", "Bruteforce",
+    "Bug", "Byte", "Calloway", "Camelcase", "Cascadingstylesheets", "Cd",
+    "Centralprocessingunit", "Character", "Chickenjockey", "Chipset", "Class",
+    "Client", "Code", "Coffee", "Commandline", "Comments", "Complier", "Computation",
+    "Computer", "Concatenation", "Conditionalstatement", "Constraint", "Container",
+    "Cook", "Copyright", "Cpucooler", "Crontab", "Csharp", "Csv", "Cybersecurity",
+    "Data", "Database", "Datastructure", "Datatype", "Debugging", "Decryption",
+    "Deeplearning", "Directory", "Disksorage", "Div", "Document",
+    "Documentobjectmodel", "Domainnamesystem", "Doom", "Drycode", "Edit", "Edwards",
+    "Efficiency", "Email", "Encapsulation", "Encryption", "Entitycomponentsystem",
+    "Environmentvariable", "Epkins", "Ethernet", "Eventhandler", "Eventlistener",
+    "Executable", "Exploit", "Extensiblemarkuplanguage", "Fileexplorer", "Firefly",
+    "Firewall", "Firmware", "Fisher", "Flask", "Float", "Footer", "Framework",
+    "Frontend", "Function", "Garbagecollection", "Ghostinshell", "Gigabyte",
+    "Github", "Globalvariable", "Godelnumbering", "Google", "Graphicaluserinterface",
+    "Graphicscard", "Greenwald", "Grumpycat", "Halflife", "Harddrive", "Hardware",
+    "Hashing", "Header", "Heatsink", "Hexadecimal", "Hitchhiker", "Hollywood",
+    "Hoodie", "Hooper", "Hypertextmarkuplanguage", "Hypertexttransferprotocol", "If",
+    "Ifstatement", "Img", "Import", "Index", "Infiniteloop", "Inheritance",
+    "Inlaystyle", "Input", "Integer", "Integrateddevelopmentenvironment", "Internet",
+    "Internetofthings", "Internetprotocol", "Interpreter", "Intrusiondetection",
+    "Java", "Javascript", "Jpg", "KAPLEWSKI", "KERNEL", "KEYBOARD", "KEYESCROW",
+    "KISNER", "KLEPTOGRAPHY", "KOTLIN", "KUBERNETES", "LAPTOP", "LATENCY", "LEAF",
+    "LIBRARY", "LINK", "LINUX", "LIST", "LOCALAREANETWORK", "LOCALVARIABLE", "LOGIC",
+    "LONG", "LOOP", "MACADDRESS", "MACHINELEARNING", "MACOS", "MAIN", "MALWARE",
+    "MARIADATABASE", "MARKUP", "MARTZ", "MATPLOTLIB", "MATRIX", "MCCORMICK",
+    "MEDIAACCESSCONTROLADDRESS", "MEMORY", "METHOD", "MINECRAFT", "MITAPPINVENTOR",
+    "MONITOR", "MOUSE", "NANO", "NETSTAT", "NETWORK", "NEURALNETWORK", "NMAP",
+    "NODE", "NOSQL", "NOTEPAD", "NYANCAT", "OBJECT", "OCTOCAT",
+    "OPENSYSTEMSINTERCONNECTIONMODEL", "OPERATINGSYTEM", "OSBORNEPIKE", "OUTPUT",
+    "PACKET", "PACMAN", "PANDAS", "PASSWORD", "PAYNE", "PENETRATIONTESTING", "PEPE",
+    "PERIPHERAL", "PHISHING", "PHONE", "PHP", "PIPES", "PIZZA", "POINTER",
+    "POLYMORPHISM", "PONG", "PORTAL", "POWERSHELL", "POWERSUPPLY", "PRINTER",
+    "PROCESS", "PROGRAMMING", "PROJECTOR", "PROPERTY", "PROTOCOL", "PSEUDOCODE",
+    "QUERY", "RANDOMACCESSMEMORY", "RANSOMWARE", "RASPBERRYPI", "RECURSION",
+    "REPLIT", "ROUTER", "RUBBERDUCK", "RUBY", "RUSSELL", "RUST", "SCRIPT", "SCRUM",
+    "SDK", "SECURITY", "SECURITYBASELINE", "SERVER", "SHELL", "SILICONVALLEY",
+    "SLACK", "SMITH", "SOCKET", "SOFTWARE", "SOLIDSTATEDRIVE", "SPOOFING", "SPRITES",
+    "SQL", "SSH", "STARTREK", "STARWARS", "STEVEJOBS", "STORYPOINT", "STRING",
+    "STRUCTUREDQUERYLANGUAGE", "STYLING", "SWIFT", "SWITCH", "TABLET", "TAGS",
+    "TCP", "TERMINAL", "TESTING", "TEXTUSERINTERFACE", "THREAD", "TRANSACTION",
+    "TRANSFORM", "TRANSMISSIONCONTROLPROTOCOL", "TURTLE", "TUX", "VARIABLE", "VIM",
+    "VIRTUALIZATION", "VIRTUALPRIVATENETWORK", "VIRUS", "VISUALSTUDIOCODE",
+    "VULNERABILITY", "WEBPAGE", "WEBSITE", "WHILE", "WIDEAREANETWORK", "WIFI",
+    "WIKIPEDIA", "WINDOWS", "WINDOWSPOWERSHELL", "WIRESHARK", "WONG", "WORM",
+    "ZELDAZERODAY", "ZOOKOSTRIANGLE"
+]
+
     return words
 
 def importBoard():
@@ -36,28 +88,31 @@ def searchHorizontally(board,word,rows,cols):
                     break
             if match:
                 return (r, c-len(word)+1,True)
+    return None#searchVerically
+
+def searchVerically(board, word, rows, cols):
+    for c in range(cols):  # Loop over each column
+        # Forward search (top to bottom)
+        for r in range(rows - len(word) + 1):
+            match = True
+            for i in range(len(word)):
+                if str(board.iloc[r + i, c]).upper() != word[i].upper():
+                    match = False
+                    break
+            if match:
+                return (r, c, False)  # False = not backwards
+
+        # Backward search (bottom to top)
+        for r in range(len(word) - 1, rows):
+            match = True
+            for i in range(len(word)):
+                if str(board.iloc[r - i, c]).upper() != word[i].upper():
+                    match = False
+                    break
+            if match:
+                return (r, c, True)  # True = backwards
     return None
 
-def searchVerically(board,word,rows,cols):
-    for c in range(cols):
-        # Forward search
-        for r in range(rows - len(word) + 1): 
-            for i in range(len(word)):
-                match = True
-                if str(board.iloc[r+i, c]).upper() != word[i].upper(): # checks for word forwards
-                    match = False
-                    break
-            if match:
-                return (r, c,False)
-        for r in range(rows - len(word),cols): 
-            for i in range(len(word)):
-                match = True
-                if str(board.iloc[r-i, c]).upper() != word[i].upper(): # checks for word backwards
-                    match = False
-                    break
-            if match:
-                return (r, c,True)
-    return None
     
 def searchDiagonally(board, word, rows, cols):
     for r in range(rows):
@@ -183,7 +238,6 @@ Original Board
 
 for word in words:
     word = word.upper()
-    print()
     search = searchHorizontally(board, word, rows, cols)
     if search:
         print(f"Found {word} Horizontally.")
@@ -194,18 +248,19 @@ for word in words:
         else:    
             print(f"2Found '{word}' at row {search[0]+1}, from column {search[1]+1} to {(search[1])+len(word)}")
     else:
-        search = Boggle(board,word,rows,cols)
-        if search:
-             print(search[2])
+        #search = Boggle(board,word,rows,cols)
+        #if search:
+        #     print(word)
+        #     print(search[2])
 
-        # search = searchVerically(board, word, rows, cols)
-        # if search:
-        #     print(f"Found {word} Vertically.")
-        #     flip = search[2]
-        #     if flip:
-        #         print(f"Found '{word}' from row {search[0]} to {(search[0])-len(word)-1}, at column {search[1]+1} ")
-        #     else:    
-        #         print(f"Found '{word}' from row {search[0]} to {(search[0])+len(word)+1}, at column {search[1]+1}")
+        search = searchVerically(board, word, rows, cols)
+        if search:
+            print(f"Found {word} Vertically.")
+            flip = search[2]
+            if flip:
+                print(f"Found '{word}' from row {search[0]} to {(search[0])-len(word)-1}, at column {search[1]+1} ")
+            else:    
+                print(f"Found '{word}' from row {search[0]} to {(search[0])+len(word)+1}, at column {search[1]+1}")
         # else:
         #     search = searchDiagonally(board, word, rows, cols)
         #     if search:
